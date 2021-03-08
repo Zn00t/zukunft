@@ -15,10 +15,14 @@
         <th>Betrag Putzkasse</th>
       </tr>
       </thead>
-      <% @user.each do |user| %>
+      <% @value.each do |user| %>
         <tr>
           <th><%= user.name %></th>
-          <td><%= user.password_digest %></td>
+          <td><%= user.sum %></td>
+          <td><%= user.rate %></td>
+          <td><%= user.food %></td>
+          <td><%= user.invest %></td>
+          <td><%= user.cleaning %></td>
         </tr>
       <% end %>
     </table>

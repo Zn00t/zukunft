@@ -4,27 +4,6 @@
 
 <div class="container">
   <% if Current.user.present? %>
-    <table class="table table-bordered table-hover table-striped">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Gesamt</th>
-        <th>Wochenrate</th>
-        <th>Betrag Essenskasse</th>
-        <th>Betrag Investitionskasse</th>
-        <th>Betrag Putzkasse</th>
-      </tr>
-      </thead>
-      <% @value.each do |user| %>
-        <tr>
-          <th><%= user.name %></th>
-          <td><%= user.sum %></td>
-          <td><%= user.rate %></td>
-          <td><%= user.food %></td>
-          <td><%= user.invest %></td>
-          <td><%= user.cleaning %></td>
-        </tr>
-      <% end %>
-    </table>
+    <%= render partial: "shared/table" %>
   <% end %>
 </div>

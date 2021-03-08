@@ -1,0 +1,33 @@
+<table class="table table-bordered table-hover table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Gesamt</th>
+    <th>Wochenrate</th>
+    <th>Betrag Essenskasse</th>
+    <th>Betrag Investitionskasse</th>
+    <th>Betrag Putzkasse</th>
+  </tr>
+  </thead>
+  <% @value.each do |value| %>
+    <% if value.name == Current.user %>
+      <tr class="table-success">
+        <th><%= value.name %></th>
+        <td><%= value.sum %></td>
+        <td><%= value.rate %></td>
+        <td><%= value.food %></td>
+        <td><%= value.invest %></td>
+        <td><%= value.cleaning %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <th><%= value.name %></th>
+        <td><%= value.sum %></td>
+        <td><%= value.rate %></td>
+        <td><%= value.food %></td>
+        <td><%= value.invest %></td>
+        <td><%= value.cleaning %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

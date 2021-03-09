@@ -10,7 +10,7 @@
   </tr>
   </thead>
   <% @value.each do |value| %>
-    <% if value.name == Current.user %>
+    <% if value.name == Current.user.name %>
       <tr class="table-success">
         <th><%= value.name %></th>
         <td><%= value.sum %></td>

@@ -11,9 +11,15 @@
   </thead>
   <% @value.each do |value| %>
     <% if value.name == Current.user.name %>
-      <tr class="table-success">
+      <tr class="table-info">
         <th><%= value.name %></th>
-        <td><%= value.sum %></td>
+        <% if value.sum >= 100 %>
+          <td class="table-danger"><%= value.sum %></td>
+        <% elsif value.sum <= -100 %>
+          <td class="table-success"><%= value.sum %></td>
+        <% else %>
+          <td><%= value.sum %></td>
+        <% end %>
         <td><%= value.rate %></td>
         <td><%= value.food %></td>
         <td><%= value.invest %></td>
@@ -22,7 +28,13 @@
     <% else %>
       <tr>
         <th><%= value.name %></th>
-        <td><%= value.sum %></td>
+        <% if value.sum >= 100 %>
+          <td class="table-danger"><%= value.sum %></td>
+        <% elsif value.sum <= -100 %>
+          <td class="table-success"><%= value.sum %></td>
+        <% else %>
+          <td><%= value.sum %></td>
+        <% end %>
         <td><%= value.rate %></td>
         <td><%= value.food %></td>
         <td><%= value.invest %></td>

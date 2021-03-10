@@ -26,7 +26,7 @@
         <td><%= value.invest %></td>
         <td><%= value.cleaning %></td>
         <td class="table-borderless">
-          <button type="button" class="btn btn-outline-info">eigene Daten ändern</button>
+          <%= button_to "eigene Daten ändern", password_reset_path, class: "btn btn-outline-info" %>
         </td>
       <% end %>
     <% else %>

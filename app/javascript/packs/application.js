@@ -10,3 +10,7 @@ import "channels"
 
 Rails.start()
 ActiveStorage.start()
+
+function showTextField() {
+document.getElementById("userWochenrate").style.background="light";
+}

@@ -11,8 +11,7 @@
   </thead>
   <% @value.each do |value| %>
     <% if value.name == Current.user.name %>
-      <%= content_tag :tr, id: dom_id(value) do %>
-
+      <tr class="table-info">
         <th><%= value.name %></th>
         <% if value.sum >= 100 %>
           <td class="table-danger"><%= value.sum %></td>
@@ -25,12 +24,11 @@
         <td><%= value.food %></td>
         <td><%= value.invest %></td>
         <td><%= value.cleaning %></td>
-        <td class="table-borderless">
+        <td>
           <%= button_to "eigene Daten ändern", password_reset_path, class: "btn btn-outline-info" %>
         </td>
-      <% end %>
+      </tr>
     <% else %>
-      <tr>
         <th><%= value.name %></th>
         <% if value.sum >= 100 %>
           <td class="table-danger"><%= value.sum %></td>

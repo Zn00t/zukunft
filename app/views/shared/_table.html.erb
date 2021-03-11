@@ -20,12 +20,12 @@
         <% else %>
           <td><%= value.sum %></td>
         <% end %>
-        <td><%= text_field_tag "userWochenrate", value.rate, class: "non-editable" %></td>
-        <td><%= text_field_tag "userEssenskasse", value.food, class: "non-editable" %></td>
-        <td><%= text_field_tag "userInvestitionskasse", value.invest, class: "non-editable" %></td>
-        <td><%= text_field_tag "userPutzkasse", value.cleaning, class: "non-editable"%></td>
+        <td><%= text_field_tag "userWochenrate", value.rate, class: "non-editable in-place-edit" %></td>
+        <td><%= text_field_tag "userEssenskasse", value.food, class: "non-editable in-place-edit" %></td>
+        <td><%= text_field_tag "userInvestitionskasse", value.invest, class: "non-editable in-place-edit" %></td>
+        <td><%= text_field_tag "userPutzkasse", value.cleaning, class: "non-editable in-place-edit"%></td>
         <td>
-          <%= button_to "eigene Daten ändern", password_reset_path, class: "btn btn-outline-info" %>
+          <%= link_to "eigene Daten ändern", "#sad", class: "btn btn-outline-info finance-submit" %>
         </td>
       </tr>
     <% else %>

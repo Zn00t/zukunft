@@ -14,15 +14,11 @@
  *= require_self
  */
 
-.btn-outline-info {
-    padding-left: 15%;
-    padding-right: 15%;
+.btn {
+    width: 100%;
     text-align: center;
 }
 
-.non-editable {
-    background: none;
-    border: none;
-    readonly: true;
-}
+
+
 

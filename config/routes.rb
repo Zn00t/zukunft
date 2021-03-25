@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   get "password/reset", to: "password_resets#new"
   post "password/reset", to: "password_resets#create"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get "edit", to: "edit_value#edit"
+  post "edit", to: "edit_value#update"
 end

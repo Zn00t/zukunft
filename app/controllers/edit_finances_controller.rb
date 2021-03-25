@@ -1,0 +1,2 @@
+class EditFinancesController < ApplicationController
+end

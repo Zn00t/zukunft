@@ -6,12 +6,3 @@ import "channels"
 
 Rails.start()
 ActiveStorage.start()
-
-$(document).ready(function () {
-
-    function showTextField() {
-        $(".in-place-edit").removeClass("non-editable");
-    }
-
-    $(".finance-submit").click(showTextField);
-});

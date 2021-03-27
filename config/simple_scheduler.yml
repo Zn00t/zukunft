@@ -6,4 +6,4 @@ tz: "Europe/Berlin" # The application time zone will be used by default if not s
 weekly_task:
   class: "WeeklyJob"
   every: "30.seconds"
-  at: "*:00"
+  at: "**:00"

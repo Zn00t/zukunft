@@ -27,4 +27,15 @@
     margin-top: 50px;
 }
 
+.restack-text-field {
+    margin-left: 15px;
+    padding-right: 50%;
+}
+.card {
+    margin-bottom: 15px;
+    border-color: #0dcaf0;
+    border-width: 1px;
+    background-color: #cff4fc;
+}
+
 

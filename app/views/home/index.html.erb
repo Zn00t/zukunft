@@ -4,8 +4,11 @@
 
 <div class="container">
   <% if Current.user.present? %>
+    <% if @pending_restack != nil %>
+      <%= render partial: "shared/restack_prompt" %>
+    <% end %>
 
     <%= render partial: "shared/table" %>
-
   <% end %>
+  <%= @pending_restack.inspect %>
 </div>

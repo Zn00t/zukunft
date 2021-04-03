@@ -6,6 +6,7 @@
 
 class User < ApplicationRecord
   has_secure_password
-  has_one :finanzwerte
+  has_one :finance_value
   validates :name, presence: true
+  has_many :restacks
 end

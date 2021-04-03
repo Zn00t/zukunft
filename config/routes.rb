@@ -16,4 +16,10 @@ Rails.application.routes.draw do
   get "edit", to: "edit_value#edit"
   patch "edit", to: "edit_value#update"
   put "edit", to: "edit_value#update"
+
+  get "restack/:id", to: "edit_value#restack", as: "restack"
+  post "restack/:id", to: "edit_value#upload_restack", as: "upload_restack"
+  patch "/", to: "home#foreign_restack"
+  post "/", to: "home#foreign_restack", as: "foreign_restack"
 end
+

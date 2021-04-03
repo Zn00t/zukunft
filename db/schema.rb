@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_191404) do
+ActiveRecord::Schema.define(version: 2021_04_03_103501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 2021_03_08_191404) do
     t.index ["user_id"], name: "index_finance_values_on_user_id"
   end
 
+  create_table "restacks", force: :cascade do |t|
+    t.integer "from_id"
+    t.integer "to_id"
+    t.integer "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.boolean "prompted"
+    t.index ["user_id"], name: "index_restacks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "password_digest"
@@ -36,4 +47,5 @@ ActiveRecord::Schema.define(version: 2021_03_08_191404) do
   end
 
   add_foreign_key "finance_values", "users"
+  add_foreign_key "restacks", "users"
 end

@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Umschichtung vorgeschlagen</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Du kriegst Geld von <%= User.find(@pending_restack.from_id).name %></h6>
+    <p> Dir wird eine Umschichtung von <%= User.find(@pending_restack.from_id).name %> über <%= @pending_restack.value %>€
+      vorgeschlagen.</p>
+    <%= button_to "Annehmen", foreign_restack_path, class: "btn btn-info" %>
+  </div>
+</div>

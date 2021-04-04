@@ -18,15 +18,15 @@
       <tr class="table-info">
         <th><%= value.name %></th>
         <% if value.sum >= 100 %>
-          <td class="table-danger"><%= value.sum %></td>
+          <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
         <% elsif value.sum <= -100 %>
-          <td class="table-success"><%= value.sum %></td>
+          <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
         <% else %>
-          <td><%= value.sum %></td>
+          <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
         <% end %>
         <td><%= value.rate %></td>
-        <td><%= value.food %></td>
-        <td><%= value.invest %></td>
+        <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
+        <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
         <td><%= value.cleaning %></td>
         <% if value.cleaned == true %>
           <td class="ticked"><%= image_tag "tick.png" %></td>
@@ -48,15 +48,15 @@
       <tr>
         <th><%= value.name %></th>
         <% if value.sum >= 100 %>
-          <td class="table-danger"><%= value.sum %></td>
+          <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
         <% elsif value.sum <= -100 %>
-          <td class="table-success"><%= value.sum %></td>
+          <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
         <% else %>
-          <td><%= value.sum %></td>
+          <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
         <% end %>
         <td><%= value.rate %></td>
-        <td><%= value.food %></td>
-        <td><%= value.invest %></td>
+        <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
+        <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
         <td><%= value.cleaning %></td>
         <% if value.cleaned == true %>
           <td class="ticked"><%= image_tag "tick.png" %></td>

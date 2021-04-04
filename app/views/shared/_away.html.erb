@@ -5,7 +5,7 @@
   </div>
   <div class="col centering">
     <%= form_with method: :put do |form| %>
-      <%= form.select :weeks, [["1 Woche", 1], ["2 Wochen", 2], ["3 Wochen", 3], ["4 Wochen", 4]] %>
+      <%= form.select :weeks, [["1 Woche", 1], ["2 Wochen", 2], ["3 Wochen", 3], ["4 Wochen", 4]], {}, class: "form-select" %>
       </div>
       <div class="col-8 centering">
         <%= form.submit "Speichern", class: "btn btn-info"%>

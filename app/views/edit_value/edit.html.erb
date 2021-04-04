@@ -22,7 +22,7 @@
     </div>
     <div class="col">
       <%= values.label :Geputzt? %><br>
-      <%= values.check_box :cleaned, checked: FinanceValue.find_by_user_id(Current.user.id).cleaned%>
+      <%= values.check_box :cleaned, checked: FinanceValue.find_by_user_id(Current.user.id).cleaned, class: "input-checkbox"%>
     </div>
     <div class="col align-self-center">
       <%= values.submit class: "btn btn-outline-info" %>

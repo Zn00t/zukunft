@@ -77,3 +77,7 @@
     <% end %>
   <% end %>
 </table>
+<% FinanceValue.all.each do |v| %>
+  <%= v.away.strftime('%F') unless v.away == nil %>
+  <%= Date.today %>
+<% end %>

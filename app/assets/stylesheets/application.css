@@ -52,3 +52,6 @@ h4 {
 .ticked {
     text-align: center;
 }
+td, th {
+    vertical-align: middle;
+}

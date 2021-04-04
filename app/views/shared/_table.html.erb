@@ -7,6 +7,7 @@
     <th>Betrag Essenskasse</th>
     <th>Betrag Investitionskasse</th>
     <th>Betrag Putzkasse</th>
+    <th>Geputzt?</th>
   </tr>
   </thead>
   <% @value.each do |value| %>
@@ -20,15 +21,21 @@
         <% else %>
           <td><%= value.sum %></td>
         <% end %>
-        <td><%= text_field_tag "userWochenrate", value.rate, class: "non-editable in-place-edit" %></td>
-        <td><%= text_field_tag "userEssenskasse", value.food, class: "non-editable in-place-edit" %></td>
-        <td><%= text_field_tag "userInvestitionskasse", value.invest, class: "non-editable in-place-edit" %></td>
-        <td><%= text_field_tag "userPutzkasse", value.cleaning, class: "non-editable in-place-edit"%></td>
+        <td><%= value.rate %></td>
+        <td><%= value.food %></td>
+        <td><%= value.invest %></td>
+        <td><%= value.cleaning %></td>
+        <% if value.cleaned == true %>
+          <td class="ticked"><%= image_tag "tick.png" %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td>
           <%= link_to "eigene Daten ändern", edit_path, class: "btn btn-outline-secondary" %>
         </td>
       </tr>
     <% else %>
+      <tr>
         <th><%= value.name %></th>
         <% if value.sum >= 100 %>
           <td class="table-danger"><%= value.sum %></td>
@@ -41,6 +48,11 @@
         <td><%= value.food %></td>
         <td><%= value.invest %></td>
         <td><%= value.cleaning %></td>
+        <% if value.cleaned == true %>
+          <td class="ticked"><%= image_tag "tick.png" %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td class="table-borderless">
           <%= link_to "Umschichtung vorschlagen", restack_path(value), class: "btn btn-outline-secondary" %>
         </td>

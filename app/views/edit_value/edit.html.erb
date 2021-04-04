@@ -20,6 +20,10 @@
       <%= values.label :Putzkasse %><br>
       <%= values.text_field :cleaning, value: FinanceValue.find_by_user_id(Current.user.id).cleaning%>
     </div>
+    <div class="col">
+      <%= values.label :Geputzt? %><br>
+      <%= values.check_box :cleaned, checked: FinanceValue.find_by_user_id(Current.user.id).cleaned%>
+    </div>
     <div class="col align-self-center">
       <%= values.submit class: "btn btn-outline-info" %>
     </div>

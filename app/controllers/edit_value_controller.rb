@@ -6,7 +6,7 @@ class EditValueController < ApplicationController
 
   def update
     @values = FinanceValue.find(Current.user.id)
-    if @values.update(params.permit(:rate, :food, :invest, :cleaning))
+    if @values.update(params.permit(:rate, :food, :invest, :cleaning, :cleaned))
       redirect_to root_path, notice: "Finanzwerte erfolgreich geändert."
     else
       render edit

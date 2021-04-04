@@ -1,11 +1,13 @@
-<div class="row input_row">
-  <div class="col-6">
-    <%= form_with method: :post do |f| %>
-      <%= f.label :value, "Wert:" %>
-      <%= f.text_field :value, placeholder: "Wert eintragen", class: "restack-text-field" %>
+<div class="container">
+  <div class="row input_row">
+    <div class="col-6">
+      <%= form_with method: :post do |f| %>
+        <%= f.label :value, "Wert:" %>
+        <%= f.text_field :value, placeholder: "Wert eintragen", class: "restack-text-field" %>
+        </div>
+        <div class="col align-self-center">
+          <%= f.submit class: "btn btn-outline-secondary" %>
+        </div>
+      <% end %>
       </div>
-      <div class="col align-self-center">
-        <%= f.submit class: "btn btn-outline-secondary" %>
-      </div>
-    <% end %>
-    </div>
+</div>

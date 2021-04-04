@@ -2,30 +2,32 @@
   <h1>Finanzen der Zukunft</h1>
 </div>
 
-<%= form_with method: :patch do |values| %>
-  <div class="row input_row">
-    <div class="col">
-      <%= values.label :Wochenrate %><br>
-      <%= values.text_field :rate, value: FinanceValue.find_by_user_id(Current.user.id).rate %>
+<div class="container">
+  <%= form_with method: :patch do |values| %>
+    <div class="row input_row">
+      <div class="col">
+        <%= values.label :Wochenrate %><br>
+        <%= values.text_field :rate, value: FinanceValue.find_by_user_id(Current.user.id).rate %>
+      </div>
+      <div class="col">
+        <%= values.label :Essenskasse %><br>
+        <%= values.text_field :food, value: FinanceValue.find_by_user_id(Current.user.id).food %>
+      </div>
+      <div class="col">
+        <%= values.label :Investitionskasse %><br>
+        <%= values.text_field :invest, value: FinanceValue.find_by_user_id(Current.user.id).invest %>
+      </div>
+      <div class="col">
+        <%= values.label :Putzkasse %><br>
+        <%= values.text_field :cleaning, value: FinanceValue.find_by_user_id(Current.user.id).cleaning %>
+      </div>
+      <div class="col">
+        <%= values.label :Geputzt? %><br>
+        <%= values.check_box :cleaned, checked: FinanceValue.find_by_user_id(Current.user.id).cleaned, class: "input-checkbox" %>
+      </div>
+      <div class="col align-self-center">
+        <%= values.submit "Speichern", class: "btn btn-info" %>
+      </div>
     </div>
-    <div class="col">
-      <%= values.label :Essenskasse %><br>
-      <%= values.text_field :food, value: FinanceValue.find_by_user_id(Current.user.id).food%>
-    </div>
-    <div class="col">
-      <%= values.label :Investitionskasse %><br>
-      <%= values.text_field :invest, value: FinanceValue.find_by_user_id(Current.user.id).invest%>
-    </div>
-    <div class="col">
-      <%= values.label :Putzkasse %><br>
-      <%= values.text_field :cleaning, value: FinanceValue.find_by_user_id(Current.user.id).cleaning%>
-    </div>
-    <div class="col">
-      <%= values.label :Geputzt? %><br>
-      <%= values.check_box :cleaned, checked: FinanceValue.find_by_user_id(Current.user.id).cleaned, class: "input-checkbox"%>
-    </div>
-    <div class="col align-self-center">
-      <%= values.submit class: "btn btn-outline-info" %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

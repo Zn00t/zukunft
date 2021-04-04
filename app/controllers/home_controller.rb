@@ -15,8 +15,14 @@ class HomeController < ApplicationController
       FinanceValue.update(@pending_restack.to_id, :food => receiver_value)
       FinanceValue.update(@pending_restack.from_id, :food => sender_value)
       Restack.update(@pending_restack.id, :prompted => true)
-      redirect_to root_path
+      redirect_to root_path, notice: "Werte aktualisiert"
     end
+  end
+
+  def away
+    away_date = Date.today + (params[:weeks].to_i) * 7
+    FinanceValue.update(Current.user.id, :away => away_date)
+    redirect_to root_path, notice: "Bis dann #{Current.user.name}!"
   end
 
   def checkrestacks

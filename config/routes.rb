@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'home#index'
 
   get "password", to: "passwords#edit", as: "edit_password"
@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   post "restack/:id", to: "edit_value#upload_restack", as: "upload_restack"
   patch "/", to: "home#foreign_restack"
   post "/", to: "home#foreign_restack", as: "foreign_restack"
+
+  put "/", to: "home#away"
 end
 

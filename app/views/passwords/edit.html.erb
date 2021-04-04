@@ -1,29 +1,29 @@
-<h1>Passwort ändern</h1>
+<div class="container">
+  <h1>Passwort ändern</h1>
 
 
-<%= form_with model: Current.user, url: edit_password_path do |form| %>
-  <% if form.object.errors.any? %>
-    <div class="alert alert-danger">
-      <% form.object.errors.full_messages.each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
+  <%= form_with model: Current.user, url: edit_password_path do |form| %>
+    <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+        <% form.object.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="container">
+      <div class="mb-3">
+        <%= form.label :password, "neues Passwort" %>
+        <%= form.password_field :password, class: "form-control", placeholder: "Passwort" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :password_confirmation, "Passwort wiederholen" %>
+        <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Passwort wiederholen" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.submit "Passwort ändern", class: "btn btn-primary" %>
+      </div>
   <% end %>
-
   </div>
-  <div class="container">
-  <div class="mb-3">
-    <%= form.label :password, "neues Passwort" %>
-    <%= form.password_field :password, class: "form-control", placeholder: "Passwort" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :password_confirmation, "Passwort wiederholen" %>
-    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Passwort wiederholen" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.submit "Passwort ändern", class: "btn btn-primary" %>
-  </div>
-<% end %>
 </div>

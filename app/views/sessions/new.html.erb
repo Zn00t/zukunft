@@ -1,17 +1,19 @@
-<h1>Log In</h1>
+<div class="container">
+  <h1>Log In</h1>
 
-<%= form_with url: sign_in_path do |form|%>
-  <div class="mb-3">
-    <%=form.label :name %>
-    <%=form.text_field :name, class: "form-control", placeholder: "Name" %>
-  </div>
+  <%= form_with url: sign_in_path do |form| %>
+    <div class="mb-3">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+    </div>
 
-  <div class="mb-3">
-    <%=form.label :password %>
-    <%=form.password_field :password, class: "form-control", placeholder: "Passwort" %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control", placeholder: "Passwort" %>
+    </div>
 
-  <div class="mb-3">
-    <%=form.submit "Einloggen", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="mb-3">
+      <%= form.submit "Einloggen", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

@@ -1,7 +1,6 @@
 <div class="d-flex align-items-center justify-content-center">
   <h1>Finanzen der Zukunft</h1>
 </div>
-
 <div class="container">
   <% if Current.user.present? %>
     <% if @pending_restack != nil %>
@@ -9,5 +8,7 @@
     <% end %>
 
     <%= render partial: "shared/table" %>
+
+      <%= render partial: "shared/away" %>
   <% end %>
-</div>
+  </div>

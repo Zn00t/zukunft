@@ -1,7 +1,7 @@
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
-    if Time.now.thursday?
+    if Time.now.monday?
       FinanceValue.all.each do |value|
         if value.away.nil?
           food_sum_insert = value.food + value.rate
@@ -21,8 +21,9 @@ namespace :dbcalc do
     else
       puts "Hey, its not Monday! (sum not updated)"
     end
-    if Date.today == Date.today.beginning_of_month
-      FinanceValue.update_all "investition = investition + 7"
+    if Date.today.day.between?(1, 6)
+      FinanceValue.update_all "invest = invest + 7"
+      puts "invest updated (+7)"
     else
       puts "not the beginning of the month! (investition not updated)"
     end

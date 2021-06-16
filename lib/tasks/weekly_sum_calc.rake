@@ -28,10 +28,17 @@ namespace :dbcalc do
       puts "not the beginning of the month! (investition not updated)"
     end
     FinanceValue.all.each do |v|
-        if !v.away.nil? && Date.today.strftime('%F') == v.away.strftime('%F')
-          FinanceValue.update(v.id, :away => nil)
-          puts "#{v.name} ist wieder da!"
-        end
+      if !v.away.nil? && Date.today.strftime('%F') == v.away.strftime('%F')
+        FinanceValue.update(v.id, :away => nil)
+        puts "#{v.name} ist wieder da!"
+      end
+    end
+  end
+
+  task :send_mail => :environment do
+    if Time.now.monday?
+      WeeklyBackupMailer.weekly_backup.deliver_now
+      puts "Mail ist raus!"
     end
   end
 end

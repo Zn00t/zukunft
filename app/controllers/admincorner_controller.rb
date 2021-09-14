@@ -1,6 +1,9 @@
 class AdmincornerController < ApplicationController
 
   def index
+    if Current.user == nil || Current.user.admin == false
+      redirect_to root_path, alert: "Du musst als Admin angemeldet sein um diese Seite zu betreten!" and return
+    end
     @users = User.all
     @inactive_users = User.where(active: false)
     @active_users = User.where(active: true)
@@ -22,6 +25,10 @@ class AdmincornerController < ApplicationController
       User.create(:name => params["/admincorner"][:name], :password => "zukunft", :password_confirmation => "zukunft", :admin => false, :active => true)
       FinanceValue.create(:name => params["/admincorner"][:name], :sum => 0, :rate => 0, :food => 0, :invest => 0, :cleaning => 0, :user_id => User.find_by_name(params["/admincorner"][:name]).id, :cleaned => false)
       redirect_to admincorner_path, notice: "#{User.find_by_name(params["/admincorner"][:name]).name} wurde hinzugefügt."
+    end
+    if params["/admincorner"][:method] == "admin_checkbox"
+      User.update(params["/admincorner"][:id], :admin => params["/admincorner"][:admin])
+      redirect_to admincorner_path, notice: "Berechtigungen aktualisiert" and return
     end
   end
 

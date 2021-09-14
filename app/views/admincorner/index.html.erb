@@ -51,10 +51,41 @@
   <div class="row add-user-row">
     <div class="col">
       <%= f.label "Name:" %>
-      <%= f.text_field :name, class: "add-user-field"%>
+      <%= f.text_field :name, class: "add-user-field" %>
     </div>
     <div class="col">
       <%= f.submit "Hinzufügen", class: "btn btn-info" %>
     </div>
   </div>
 <% end %>
+
+<h4>Berechtigungen</h4>
+<div class="list-group permissions">
+  <% @users.each do |user| %>
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col">
+          <%= user.name %>
+        </div>
+        <div class="col">
+          <%= form_for admincorner_path do |f| %>
+            <%= f.hidden_field :method, value: :admin_checkbox %>
+            <%= f.hidden_field :id, value: user.id %>
+            <div class="row">
+              <div class="col-5">
+                <%= f.check_box :admin, class: "admin-checkbox", checked: user.admin %>
+              </div>
+              <div class="col">
+                <% if user.admin %>
+                  <%= f.submit "Update", class: "btn btn-outline-danger" %>
+                <% else %>
+                  <%= f.submit "Update", class: "btn btn-outline-success" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

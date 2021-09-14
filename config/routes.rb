@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   put "/", to: "home#away"
 
   get "admincorner", to: "admincorner#index", as: "admincorner"
+  post "admincorner", to: "admincorner#change", as: "admincorner_change"
 end
 

@@ -1,3 +1,18 @@
 // Place all the styles related to the admincorner controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+h1 {
+  padding: 2rem;
+}
+h5 {
+  padding-top: 1rem;
+}
+.add-user-row {
+  margin: 3rem;
+}
+.add-user-field {
+  margin-left: 1rem;
+  width: 80%;
+  font-size: 15pt;
+}

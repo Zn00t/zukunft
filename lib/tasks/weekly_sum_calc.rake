@@ -1,9 +1,9 @@
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
-    if Time.now.monday?
+    if Time.now.tuesday?
       FinanceValue.all.each do |value|
-        if value.away.nil?
+        if value.away.nil? && User.find(value.user_id).active
           food_sum_insert = value.food + value.rate
           FinanceValue.update(value.id, :food => food_sum_insert)
           puts "#{value.name}'s sum updated (+#{value.rate})"
@@ -11,7 +11,7 @@ namespace :dbcalc do
       end
       @values = FinanceValue.all
       @values.each do |v|
-        if v.away.nil? && v.cleaned == false
+        if v.away.nil? && v.cleaned == false && User.find(v.user_id).active
           cleaning_sum_insert = FinanceValue.find(v.id).cleaning + 10
           FinanceValue.update(v.id, :cleaning => cleaning_sum_insert)
           puts "#{FinanceValue.find(v.id).name} didn't clean! +10 for dirtyness!"
@@ -21,9 +21,14 @@ namespace :dbcalc do
     else
       puts "Hey, its not Monday! (sum not updated)"
     end
-    if Date.today.day.between?(1, 6)
-      FinanceValue.update_all "invest = invest + 7"
-      puts "invest updated (+7)"
+    if Date.today.day.between?(1, 14)
+      @values.each do |v|
+        if User.find(v.user_id).active
+          invest_insert = v.invest += 7
+          FinanceValue.update(v.id, :invest => invest_insert)
+          puts "#{v.name}'s invest updated (+7)'"
+        end
+      end
     else
       puts "not the beginning of the month! (investition not updated)"
     end

@@ -42,8 +42,13 @@
             <% end %>
           <% end %>
           <td>
-            <%= link_to "eigene Daten ändern", edit_path, class: "btn btn-info" %>
+            <%= form_with url: edit_path(value.id), method: :get do |f| %>
+              <%= f.submit "eigene Daten ändern", class: "btn btn-info" %>
+            <% end %>
           </td>
+          <% if Current.user.admin %>
+            <td></td>
+          <% end %>
         </tr>
       <% else %>
         <tr>
@@ -74,7 +79,14 @@
           <td class="table-borderless">
             <%= link_to "Umschichtung vorschlagen", restack_path(value), class: "btn btn-outline-secondary" %>
           </td>
-        </tr>
+          <% if Current.user.admin %>
+            <td>
+              <%= form_with url: edit_path(value.id), method: :get do |f| %>
+                <%= f.submit "Fremde Daten ändern", class: "btn btn-info" %>
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
       <% end %>
     <% end %>
   <% end %>

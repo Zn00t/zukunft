@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   get "password/reset", to: "password_resets#new"
   post "password/reset", to: "password_resets#create"
 
-  get "edit", to: "edit_value#edit"
-  patch "edit", to: "edit_value#update"
-  put "edit", to: "edit_value#update"
+  get "edit/:id", to: "edit_value#edit", as: "edit"
+  patch "edit/:id", to: "edit_value#update"
+  put "edit/:id", to: "edit_value#update"
 
   get "restack/:id", to: "edit_value#restack", as: "restack"
   post "restack/:id", to: "edit_value#upload_restack", as: "upload_restack"

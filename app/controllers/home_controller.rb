@@ -10,8 +10,8 @@ class HomeController < ApplicationController
 
   def foreign_restack
     if Current.user.present?
-      receiver_value = FinanceValue.find(@pending_restack.to_id).food + @pending_restack.value
-      sender_value = FinanceValue.find(@pending_restack.from_id).food - @pending_restack.value
+      receiver_value = FinanceValue.find(@pending_restack.to_id).food - @pending_restack.value
+      sender_value = FinanceValue.find(@pending_restack.from_id).food + @pending_restack.value
       FinanceValue.update(@pending_restack.to_id, :food => receiver_value)
       FinanceValue.update(@pending_restack.from_id, :food => sender_value)
       Restack.update(@pending_restack.id, :prompted => true)

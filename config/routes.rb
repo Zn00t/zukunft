@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   post "/", to: "home#foreign_restack", as: "foreign_restack"
 
   put "/", to: "home#away"
+
+  get "admincorner", to: "admincorner#index", as: "admincorner"
 end
 

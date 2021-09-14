@@ -12,6 +12,11 @@
         <li class="nav-item">
           <a class="nav-link" href="https://zukunft.rocks/">Wiki</a>
         </li>
+        <% if Current.user && Current.user.admin %>
+          <li>
+            <%= link_to "Adminbereich", admincorner_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if Current.user %>

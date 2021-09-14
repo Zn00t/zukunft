@@ -14,66 +14,68 @@
   </tr>
   </thead>
   <% @value.each do |value| %>
-    <% if value.name == Current.user.name %>
-      <tr class="table-info">
-        <th><%= value.name %></th>
-        <% if value.sum >= 100 %>
-          <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-        <% elsif value.sum <= -100 %>
-          <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-        <% else %>
-          <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-        <% end %>
-        <td><%= value.rate %></td>
-        <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
-        <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
-        <td><%= value.cleaning %></td>
-        <% if value.cleaned == true %>
-          <td class="ticked"><%= image_tag "tick.png" %></td>
-        <% else %>
-          <td></td>
-        <% end %>
-        <% if value.away.present? || FinanceValue.where.not(:away => nil).present? %>
-          <% if value.away.present? %>
-            <td class="away_date"><%= "#{value.away.day}.#{value.away.month}.#{value.away.year}" %></td>
+    <% if User.find(value.user_id).active %>
+      <% if value.name == Current.user.name %>
+        <tr class="table-info">
+          <th><%= value.name %></th>
+          <% if value.sum >= 100 %>
+            <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
+          <% elsif value.sum <= -100 %>
+            <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
+          <% else %>
+            <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
+          <% end %>
+          <td><%= value.rate %></td>
+          <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
+          <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
+          <td><%= value.cleaning %></td>
+          <% if value.cleaned == true %>
+            <td class="ticked"><%= image_tag "tick.png" %></td>
           <% else %>
             <td></td>
           <% end %>
-        <% end %>
-        <td>
-          <%= link_to "eigene Daten ändern", edit_path, class: "btn btn-info" %>
-        </td>
-      </tr>
-    <% else %>
-      <tr>
-        <th><%= value.name %></th>
-        <% if value.sum >= 100 %>
-          <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-        <% elsif value.sum <= -100 %>
-          <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-        <% else %>
-          <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-        <% end %>
-        <td><%= value.rate %></td>
-        <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
-        <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
-        <td><%= value.cleaning %></td>
-        <% if value.cleaned == true %>
-          <td class="ticked"><%= image_tag "tick.png" %></td>
-        <% else %>
-          <td></td>
-        <% end %>
-        <% if value.away.present? || FinanceValue.where.not(:away => nil).present? %>
-          <% if value.away.present? %>
-            <td class="away_date"><%= "#{value.away.day}.#{value.away.month}.#{value.away.year}" %></td>
+          <% if value.away.present? || FinanceValue.where.not(:away => nil).present? %>
+            <% if value.away.present? %>
+              <td class="away_date"><%= "#{value.away.day}.#{value.away.month}.#{value.away.year}" %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+          <% end %>
+          <td>
+            <%= link_to "eigene Daten ändern", edit_path, class: "btn btn-info" %>
+          </td>
+        </tr>
+      <% else %>
+        <tr>
+          <th><%= value.name %></th>
+          <% if value.sum >= 100 %>
+            <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
+          <% elsif value.sum <= -100 %>
+            <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
+          <% else %>
+            <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
+          <% end %>
+          <td><%= value.rate %></td>
+          <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
+          <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
+          <td><%= value.cleaning %></td>
+          <% if value.cleaned == true %>
+            <td class="ticked"><%= image_tag "tick.png" %></td>
           <% else %>
             <td></td>
           <% end %>
-        <% end %>
-        <td class="table-borderless">
-          <%= link_to "Umschichtung vorschlagen", restack_path(value), class: "btn btn-outline-secondary" %>
-        </td>
-      </tr>
+          <% if value.away.present? || FinanceValue.where.not(:away => nil).present? %>
+            <% if value.away.present? %>
+              <td class="away_date"><%= "#{value.away.day}.#{value.away.month}.#{value.away.year}" %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+          <% end %>
+          <td class="table-borderless">
+            <%= link_to "Umschichtung vorschlagen", restack_path(value), class: "btn btn-outline-secondary" %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   <% end %>
 </table>

@@ -44,6 +44,8 @@ namespace :dbcalc do
     if Time.now.monday?
       WeeklyBackupMailer.weekly_backup.deliver_now
       puts "Mail ist raus!"
+    else
+      puts "es ist nicht Montag (keine Backup Mail)"
     end
   end
 end

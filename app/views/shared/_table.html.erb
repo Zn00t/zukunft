@@ -95,3 +95,13 @@
     <% end %>
   <% end %>
 </table>
+<table class="table table-bordered table-hover table-striped table-responsible sum">
+  <tr>
+    <th>Gesamt</th>
+    <td></td><td></td>
+    <% @values.each do |value| %>
+      <% food_sum += value.food %>
+      <%= food_sum %>
+    <% end %>
+  </tr>
+</table>

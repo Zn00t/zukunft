@@ -100,6 +100,7 @@
     <th>Gesamt</th>
     <td></td><td></td>
     <% @value.each do |value| %>
+      <% food_sum = 0.0 %>
       <% food_sum += value.food %>
       <%= food_sum %>
     <% end %>

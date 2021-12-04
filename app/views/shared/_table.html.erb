@@ -94,17 +94,15 @@
       <% end %>
     <% end %>
   <% end %>
-</table>
-<table class="table table-bordered table-hover table-striped table-responsible sum">
   <tr>
     <th>Gesamt</th>
     <td></td><td></td>
     <td>
-    <% food_sum = 0.0 %>
-    <% @value.each do |value| %>
+      <% food_sum = 0.0 %>
+      <% @value.each do |value| %>
         <% food_sum += value.food %>
 
-    <% end %>
+      <% end %>
       <%= food_sum %>
     </td>
   </tr>

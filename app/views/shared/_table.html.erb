@@ -113,5 +113,14 @@
       <% end %>
       <%= invest_sum %>
     </td>
+    <td>
+      <% cleaning_sum = 0.0 %>
+      <% @value.each do |value| %>
+        <% cleaning_sum += value.cleaning %>
+
+      <% end %>
+      <%= cleaning_sum %>
+    </td>
+    <td></td><td></td>
   </tr>
 </table>

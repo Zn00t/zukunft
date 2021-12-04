@@ -105,5 +105,13 @@
       <% end %>
       <%= food_sum %>
     </td>
+    <td>
+      <% invest_sum = 0.0 %>
+      <% @value.each do |value| %>
+        <% invest_sum += value.invest %>
+
+      <% end %>
+      <%= invest_sum %>
+    </td>
   </tr>
 </table>

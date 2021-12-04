@@ -99,10 +99,13 @@
   <tr>
     <th>Gesamt</th>
     <td></td><td></td>
+    <td>
+    <% food_sum = 0.0 %>
     <% @value.each do |value| %>
-      <% food_sum = 0.0 %>
-      <% food_sum += value.food %>
-      <%= food_sum %>
+        <% food_sum += value.food %>
+
     <% end %>
+      <%= food_sum %>
+    </td>
   </tr>
 </table>

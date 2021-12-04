@@ -16,7 +16,7 @@ namespace :dbcalc do
           FinanceValue.update(v.id, :cleaning => cleaning_sum_insert)
           puts "#{FinanceValue.find(v.id).name} didn't clean! +10 for dirtyness!"
         end
-        FinanceValue.update(v.id, :cleaned => false) unless v.name == "Nini" || v.name == "Jan"
+        FinanceValue.update(v.id, :cleaned => false) unless v.name == "Nini"
       end
     else
       puts "Hey, its not Monday! (sum not updated)"

@@ -8,10 +8,10 @@
     <th>Betrag Investitionskasse</th>
     <th>Betrag Putzkasse</th>
     <th>Geputzt?</th>
-    <th></th>
     <% if FinanceValue.where.not(:away => nil).present? %>
       <th>Weg bis zum</th>
     <% end %>
+    <th></th>
     <% if Current.user.admin %>
       <th></th>
     <% end %>

@@ -42,10 +42,10 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'wg.zukunft',
-    password:             ENV['wgpw'],
     authentication:       'plain',
-    enable_starttls_auto: true }
+    enable_starttls_auto: true,
+    user_name:            'zukunftstest',
+    password:             ENV['WGPW']}
 
 
   config.action_mailer.perform_caching = false

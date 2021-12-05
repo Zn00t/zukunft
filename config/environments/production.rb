@@ -69,10 +69,10 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'wg.zukunft',
-    password:             'googleistnichtdiezukunft',
     authentication:       'plain',
-    enable_starttls_auto: true }
+    enable_starttls_auto: true,
+    user_name:            'zukunftstest',
+    password:             ENV['WGPW']}
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

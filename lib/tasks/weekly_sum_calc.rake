@@ -41,7 +41,7 @@ namespace :dbcalc do
   end
 
   task :send_mail => :environment do
-    if Time.now.sunday?
+    if Time.now.monday?
       WeeklyBackupMailer.weekly_backup.deliver_now
       puts "Mail ist raus!"
     else

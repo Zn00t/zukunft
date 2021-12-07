@@ -1,7 +1,7 @@
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
-    if Time.now.tuesday?
+    if Time.now.monday?
       FinanceValue.all.each do |value|
         if value.away.nil? && User.find(value.user_id).active
           food_sum_insert = value.food + value.rate
@@ -16,7 +16,7 @@ namespace :dbcalc do
           FinanceValue.update(v.id, :cleaning => cleaning_sum_insert)
           puts "#{FinanceValue.find(v.id).name} didn't clean! +10 for dirtyness!"
         end
-        FinanceValue.update(v.id, :cleaned => false) unless v.name == "Nini"
+        FinanceValue.update(v.id, :cleaned => false) unless v.name == "Nini" || v.name == "Pitt" || v.name == "Alma"
       end
     else
       puts "Hey, its not Monday! (sum not updated)"

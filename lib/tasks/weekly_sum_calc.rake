@@ -1,7 +1,7 @@
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
-    if Time.now.tuesday?
+    if Time.now.monday?
       FinanceValue.all.each do |value|
         if value.away.nil? && User.find(value.user_id).active
           food_sum_insert = value.food + value.rate

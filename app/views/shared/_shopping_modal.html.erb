@@ -17,8 +17,8 @@
       </div>
       <div class="modal-body">
         <%= form_with model: @userFinanceValue do |form|%>
-          <% form.text_field placeholder: "0.00" %>
-          <% form.submit "Speichern" , class: "btn btn-info" %>
+          <%= form.text_field placeholder: "0.00" %>
+          <%= form.submit "Speichern" , class: "btn btn-info" %>
         <% end %>
       </div>
       <div class="modal-footer">

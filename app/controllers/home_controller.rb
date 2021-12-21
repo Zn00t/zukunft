@@ -27,8 +27,11 @@ class HomeController < ApplicationController
   end
 
   def shopping
+    if (params[:value].to_f != 0.0)
+      FinanceValue.update(id: Current.user.id, food: "food - #{params[:value]}")
+      redirect_to root_path, notice: "Danke dir!"
+    end
 
-    redirect_to root_path, notice: "Danke dir!"
   end
 
   def checkrestacks

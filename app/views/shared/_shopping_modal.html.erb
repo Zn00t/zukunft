@@ -16,17 +16,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= form_with method: :patch, url: "/shopping" do |form|%>
+        <%= form_with method: :patch, url: "/shopping" do |form| %>
           <%= form.text_field :value, placeholder: "0.00", class: "shoppingField" %>
-          <%= form.submit "Speichern" , class: "btn btn-info" %>
+          <%= form.submit "Speichern", class: "btn btn-info" %>
         <% end %>
       </div>
       <div class="modal-footer">
-        <div class="row">
-          <div class="col-2">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-          </div>
-        </div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
       </div>
     </div>
   </div>

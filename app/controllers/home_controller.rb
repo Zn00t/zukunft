@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   def shopping
     if (params[:value].to_f != 0.0)
       financeValue = FinanceValue.find(Current.user.id)
-      updatedFood = financeValue.food + params[:value]
+      updatedFood = financeValue.food + params[:value].to_f
       financeValue.update(food: updatedFood)
       redirect_to root_path, notice: "Danke dir!"
     end

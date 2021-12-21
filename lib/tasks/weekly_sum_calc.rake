@@ -33,7 +33,7 @@ namespace :dbcalc do
       puts "not the beginning of the month! (investition not updated)"
     end
     FinanceValue.all.each do |v|
-      if !v.away.nil? && Date.today.strftime('%F') == v.away.strftime('%F')
+      if !v.away.nil? && (Date.today.strftime('%F') == v.away.strftime('%F') || v.away.past?)
         FinanceValue.update(v.id, :away => nil)
         puts "#{v.name} ist wieder da!"
       end

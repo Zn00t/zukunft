@@ -6,7 +6,9 @@ class HomeController < ApplicationController
   def index
     @value = FinanceValue.all
     @user = User.all
-    @userFinanceValue = FinanceValue.find(Current.user.id)
+    if Current.user.present?
+      @userFinanceValue = FinanceValue.find(Current.user.id)
+    end
   end
 
   def foreign_restack

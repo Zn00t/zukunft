@@ -58,3 +58,10 @@ h1 {
 td, th {
     vertical-align: middle;
 }
+.inputField {
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #000000b0;
+    border-radius: 3px;
+    padding: 5px;
+}

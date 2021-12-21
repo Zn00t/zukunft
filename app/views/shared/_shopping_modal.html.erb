@@ -1,10 +1,12 @@
 <!-- Button trigger modal -->
 <div class="row">
+  <div class="col-5"></div>
   <div class="col-2">
-    <button type="button" class="btn btn-info shoppingButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-success shoppingButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Ich war einkaufen!
     </button>
   </div>
+  <div class="col-5"></div>
 </div>
 
 <!-- Modal -->
@@ -17,8 +19,8 @@
       </div>
       <div class="modal-body">
         <%= form_with method: :patch, url: "/shopping" do |form| %>
-          <%= form.text_field :value, placeholder: "0.00", class: "shoppingField" %>
-          <%= form.submit "Speichern", class: "btn btn-info shoppingSubmitButton" %>
+          <%= form.text_field :value, placeholder: "0.00", class: "inputField" %>
+          <%= form.submit "Speichern", class: "btn btn-success shoppingSubmitButton" %>
         <% end %>
       </div>
       <div class="modal-footer">

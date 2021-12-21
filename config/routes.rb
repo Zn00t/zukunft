@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   patch "edit/:id", to: "edit_value#update"
   put "edit/:id", to: "edit_value#update"
 
+  patch "/shopping", to: "home#shopping"
+
   get "restack/:id", to: "edit_value#restack", as: "restack"
   post "restack/:id", to: "edit_value#upload_restack", as: "upload_restack"
   patch "/", to: "home#foreign_restack"

@@ -26,6 +26,11 @@ class HomeController < ApplicationController
     redirect_to root_path, notice: "Bis dann #{Current.user.name}!"
   end
 
+  def shopping
+
+    redirect_to root_path, notice: "Danke dir!"
+  end
+
   def checkrestacks
     if Current.user.present?
       @pending_restack = Restack.where(:prompted => false, :to_id => Current.user.id).first

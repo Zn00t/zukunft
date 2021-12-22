@@ -22,6 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-rails'
 
+gem "httparty", "~> 0.18" # Makes http fun!
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

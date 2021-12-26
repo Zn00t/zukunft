@@ -1,3 +1,5 @@
+require_relative '../assets/telegram_shared.rb'
+
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
@@ -42,10 +44,15 @@ namespace :dbcalc do
 
   task :send_mail => :environment do
     if Time.now.monday?
-      WeeklyBackupMailer.weekly_backup.deliver_now
+      #WeeklyBackupMailer.weekly_backup.deliver_now
       puts "Mail ist raus!"
+      send_to_klingel("Coming in hot!\nBackup der KW#{Date.today.strftime("%U").to_i}")
+      send_backup_to_klingel()
     else
       puts "es ist nicht Montag (keine Backup Mail)"
     end
+  end
+  task :send_message => :environment do
+    send_to_klingel("Hello World!")
   end
 end

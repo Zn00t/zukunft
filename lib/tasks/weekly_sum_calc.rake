@@ -43,7 +43,7 @@ namespace :dbcalc do
   end
 
   task :send_mail => :environment do
-    if Time.now.monday?
+    if Time.now.thursday?
       #WeeklyBackupMailer.weekly_backup.deliver_now
       puts "Mail ist raus!"
       send_to_klingel("Coming in hot!\nBackup der KW#{Date.today.strftime("%U").to_i}")

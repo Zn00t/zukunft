@@ -1,0 +1,31 @@
+<!-- Button trigger modal -->
+<div class="row">
+  <div class="col"></div>
+  <div class="col">
+    <button type="button" class="btn btn-primary cleaningButton" data-bs-toggle="modal" data-bs-target="#cleaningModal">
+      Ich hab geputzt!
+    </button>
+  </div>
+  <div class="col"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="cleaningModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog screenWidth">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cleaningModalLabel">Ich hab geputzt!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Hast du auch ganz sicher geputzt?</p>
+        <%= form_with method: :patch, url: "/cleaning" do |form| %>
+          <%= form.submit "Na klaa!", class: "btn btn-primary cleaningSubmitButton" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+</div>

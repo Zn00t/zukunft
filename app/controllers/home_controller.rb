@@ -35,7 +35,12 @@ class HomeController < ApplicationController
       financeValue.update(food: updatedFood)
       redirect_to root_path, notice: "Danke dir!"
     end
+  end
 
+  def cleaning
+    financeValue = FinanceValue.find(Current.user.id)
+    financeValue.update(cleaned: true)
+    redirect_to root_path, notice: "Danke!"
   end
 
   def checkrestacks

@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover table-striped table-responsible">
+<table class="table table-bordered table-hover table-striped table-responsible table-overview">
   <thead>
   <tr>
     <th>Name</th>
@@ -18,108 +18,19 @@
   </tr>
   </thead>
   <% @value.each do |value| %>
-    <% if User.find(value.user_id).active %>
-      <% if value.name == Current.user.name %>
-        <tr class="table-info">
-          <th><%= value.name %></th>
-          <% if value.sum >= 100 %>
-            <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-          <% elsif value.sum <= -100 %>
-            <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-          <% else %>
-            <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-          <% end %>
-          <td><%= value.rate %></td>
-          <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
-          <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
-          <td><%= value.cleaning %></td>
-          <% if value.cleaned == true %>
-            <td class="ticked"><%= image_tag "tick.png" %></td>
-          <% else %>
-            <td></td>
-          <% end %>
-          <% if value.away.present? || FinanceValue.where.not(:away => nil).present? %>
-            <% if value.away.present? %>
-              <td class="away_date"><%= "#{value.away.day}.#{value.away.month}.#{value.away.year}" %></td>
-            <% else %>
-              <td></td>
-            <% end %>
-          <% end %>
-          <td>
-            <%= form_with url: edit_path(value.id), method: :get do |f| %>
-              <%= f.submit "eigene Daten ändern", class: "btn btn-info" %>
-            <% end %>
-          </td>
-          <% if Current.user.admin %>
-            <td></td>
-          <% end %>
-        </tr>
-      <% else %>
-        <tr>
-          <th><%= value.name %></th>
-          <% if value.sum >= 100 %>
-            <td class="table-danger"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-          <% elsif value.sum <= -100 %>
-            <td class="table-success"><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-          <% else %>
-            <td><%= number_with_precision(value.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-          <% end %>
-          <td><%= value.rate %></td>
-          <td><%= number_with_precision(value.food, precision: 2, strip_insignificant_zeros: true) %></td>
-          <td><%= number_with_precision(value.invest, precision: 2, strip_insignificant_zeros: true) %></td>
-          <td><%= value.cleaning %></td>
-          <% if value.cleaned == true %>
-            <td class="ticked"><%= image_tag "tick.png" %></td>
-          <% else %>
-            <td></td>
-          <% end %>
-          <% if value.away.present? || FinanceValue.where.not(:away => nil).present? %>
-            <% if value.away.present? %>
-              <td class="away_date"><%= "#{value.away.day}.#{value.away.month}.#{value.away.year}" %></td>
-            <% else %>
-              <td></td>
-            <% end %>
-          <% end %>
-          <td class="table-borderless">
-            <%= link_to "Umschichtung vorschlagen", restack_path(value), class: "btn btn-outline-secondary" %>
-          </td>
-          <% if Current.user.admin %>
-            <td>
-              <%= form_with url: edit_path(value.id), method: :get do |f| %>
-                <%= f.submit "Fremde Daten ändern", class: "btn btn-info" %>
-              <% end %>
-            </td>
-            </tr>
-          <% end %>
-      <% end %>
-    <% end %>
+    <%= render partial: "shared/table_item", object: value %>
   <% end %>
   <tr>
     <th>Gesamt</th>
     <td></td><td></td>
     <td>
-      <% food_sum = 0.0 %>
-      <% @value.each do |value| %>
-        <% food_sum += value.food %>
-
-      <% end %>
-      <%= number_with_precision(food_sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@value.map(&:food).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td>
-      <% invest_sum = 0.0 %>
-      <% @value.each do |value| %>
-        <% invest_sum += value.invest %>
-
-      <% end %>
-      <%= number_with_precision(invest_sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@value.map(&:invest).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td>
-      <% cleaning_sum = 0.0 %>
-      <% @value.each do |value| %>
-        <% cleaning_sum += value.cleaning %>
-
-      <% end %>
-      <%= number_with_precision(cleaning_sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@value.map(&:cleaning).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td></td><td></td>
   </tr>

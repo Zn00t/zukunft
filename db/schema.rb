@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_09_14_085920) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "finance_values", force: :cascade do |t|
     t.string "name"
     t.float "sum"
@@ -24,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_085920) do
     t.integer "cleaning"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.boolean "cleaned"
     t.date "away"
     t.index ["user_id"], name: "index_finance_values_on_user_id"
@@ -36,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_085920) do
     t.integer "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.boolean "prompted"
     t.index ["user_id"], name: "index_restacks_on_user_id"
   end

@@ -1,26 +1,14 @@
 # README
 
-== README blablabla ==
+## setup
+* bundle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* b rake yarn:install
 
-Things you may want to cover:
+* setup db `b rake db:migrate`
 
-* Ruby version
+* seed db `b rake db:seed`
 
-* System dependencies
+* yarn
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* have webpacker running `./bin/webpack-dev-server`

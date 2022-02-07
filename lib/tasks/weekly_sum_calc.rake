@@ -39,7 +39,7 @@ namespace :dbcalc do
     User.find_each do |user|
       if !user.away.nil? && (Date.today.strftime('%F') == user.away.strftime('%F') || user.away.past?)
         user.away = nil
-        puts "#{v.name} ist wieder da!"
+        puts "#{user.name} ist wieder da!"
         user.save
       end
     end

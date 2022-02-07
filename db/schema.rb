@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_085920) do
+ActiveRecord::Schema.define(version: 2022_02_07_100132) do
 
   create_table "finance_values", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 2021_09_14_085920) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin"
     t.boolean "active"
+    t.integer "rate", default: 0, null: false
+    t.float "food", default: 0.0, null: false
+    t.float "invest", default: 0.0, null: false
+    t.integer "cleaning", default: 0, null: false
+    t.boolean "cleaned", default: false, null: false
+    t.date "away"
   end
 
   add_foreign_key "finance_values", "users"

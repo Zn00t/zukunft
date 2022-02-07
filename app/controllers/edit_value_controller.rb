@@ -1,12 +1,10 @@
 class EditValueController < ApplicationController
 
   def edit
-    @values = FinanceValue.find(Current.user.id)
   end
 
   def update
-    @values = FinanceValue.find(params[:id])
-    if @values.update(params.permit(:rate, :food, :invest, :cleaning, :cleaned))
+    if Current.user.update(params.permit(:rate, :food, :invest, :cleaning, :cleaned))
       redirect_to root_path, notice: "Finanzwerte erfolgreich geändert."
     else
       render edit
@@ -14,8 +12,8 @@ class EditValueController < ApplicationController
   end
 
   def restack
-    @value = FinanceValue.find(params[:id])
   end
+
   def upload_restack
     if params[:value] != "" &&
       Restack.create(from_id: Current.user.id, to_id: params[:id], value: params[:value], user_id: Current.user.id, prompted: false)
@@ -24,4 +22,4 @@ class EditValueController < ApplicationController
       redirect_to restack_path, alert: "Bitte gib einen Wert ein."
     end
   end
-  end
+end

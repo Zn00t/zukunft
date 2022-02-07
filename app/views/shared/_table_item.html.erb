@@ -16,7 +16,7 @@
   <% else %>
     <td></td>
   <% end %>
-  <% if table_item.away.present? || FinanceValue.where.not(:away => nil).present? %>
+  <% if table_item.away.present? || User.where.not(:away => nil).present? %>
     <% if table_item.away.present? %>
       <td class="away_date"><%= "#{table_item.away.day}.#{table_item.away.month}.#{table_item.away.year}" %></td>
     <% else %>

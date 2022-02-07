@@ -4,40 +4,43 @@ namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
     if Time.now.monday?
-      FinanceValue.all.each do |value|
-        if value.away.nil? && User.find(value.user_id).active
-          food_sum_insert = value.food + value.rate
-          FinanceValue.update(value.id, :food => food_sum_insert)
-          puts "#{value.name}'s sum updated (+#{value.rate})"
+      User.all.each do |user|
+        next unless user.away.nil?
+        next unless user.active
+
+        # increase food
+        user.food += user.rate
+        puts "#{user.name}'s sum updated (+#{user.rate})"
+
+        # if user didn't clean, increase cleaning account
+        # some users are exempt
+        if !user.cleaned &&
+            !["Nini", "Pitt", "Alma"].include?(user.name)
+          user.cleaning += 10
+          puts "#{user.name} didn't clean! +10 for dirtyness!"
         end
-      end
-      @values = FinanceValue.all
-      @values.each do |v|
-        if v.away.nil? && v.cleaned == false && User.find(v.user_id).active
-          cleaning_sum_insert = FinanceValue.find(v.id).cleaning + 10
-          FinanceValue.update(v.id, :cleaning => cleaning_sum_insert)
-          puts "#{FinanceValue.find(v.id).name} didn't clean! +10 for dirtyness!"
-        end
-        FinanceValue.update(v.id, :cleaned => false) unless v.name == "Nini" || v.name == "Pitt" || v.name == "Alma"
+        user.save
       end
     else
       puts "Hey, its not Monday! (sum not updated)"
     end
-    if Date.today.day.between?(1, 14)
-      @values.each do |v|
-        if User.find(v.user_id).active
-          invest_insert = v.invest += 7
-          FinanceValue.update(v.id, :invest => invest_insert)
-          puts "#{v.name}'s invest updated (+7)'"
-        end
+
+    if Date.today.day.between?(1, 10)
+      User.find_each do |user|
+        next unless user.active
+        user.invest += 7
+        puts "#{user.name}'s invest updated (+7)'"
+        user.save
       end
     else
       puts "not the beginning of the month! (investition not updated)"
     end
-    FinanceValue.all.each do |v|
-      if !v.away.nil? && (Date.today.strftime('%F') == v.away.strftime('%F') || v.away.past?)
-        FinanceValue.update(v.id, :away => nil)
-        puts "#{v.name} ist wieder da!"
+
+    User.find_each do |user|
+      if !user.away.nil? && (Date.today.strftime('%F') == user.away.strftime('%F') || user.away.past?)
+        user.away = nil
+        puts "#{user.name} ist wieder da!"
+        user.save
       end
     end
   end

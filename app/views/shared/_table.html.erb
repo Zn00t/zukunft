@@ -17,20 +17,20 @@
     <% end %>
   </tr>
   </thead>
-  <% @value.each do |value| %>
-    <%= render partial: "shared/table_item", object: value %>
+  <% @user.each do |user| %>
+    <%= render partial: "shared/table_item", object: user %>
   <% end %>
   <tr>
     <th>Gesamt</th>
     <td></td><td></td>
     <td>
-      <%= number_with_precision(@value.map(&:food).sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@user.map(&:food).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td>
-      <%= number_with_precision(@value.map(&:invest).sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@user.map(&:invest).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td>
-      <%= number_with_precision(@value.map(&:cleaning).sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@user.map(&:cleaning).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td></td><td></td>
   </tr>

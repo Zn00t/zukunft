@@ -1,6 +1,6 @@
 <% row_class = "" %>
-<% row_class = "table-info" if Current.user.id == table_item.user.id %>
-<% row_class = "table-secondary" if !table_item.user.active %>
+<% row_class = "table-info" if Current.user.id == table_item.id %>
+<% row_class = "table-secondary" if !table_item.active %>
 <tr class=<%= row_class %>>
   <th class='username'><%= table_item.name %></th>
   <% class_name = "" %>

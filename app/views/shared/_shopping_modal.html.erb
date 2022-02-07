@@ -19,7 +19,7 @@
       </div>
       <div class="modal-body">
         <%= form_with method: :patch, url: "/shopping" do |form| %>
-          <%= form.text_field :value, placeholder: "0.00", class: "inputField" %>
+          <%= form.number_field :value, placeholder: "0.00", class: "inputField" %>
           <%= form.submit "Speichern", class: "btn btn-success shoppingSubmitButton" %>
         <% end %>
       </div>

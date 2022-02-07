@@ -25,7 +25,7 @@ namespace :dbcalc do
       puts "Hey, its not Monday! (sum not updated)"
     end
 
-    if Date.today.day.between?(1, 10)
+    if Date.today.day == 1
       User.find_each do |user|
         next unless user.active
         user.invest += 7

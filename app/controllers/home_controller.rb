@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
   def away
     away_date = Date.today + (params[:weeks].to_i) * 7
-    Current.user.mark_away!(until: away_date)
+    Current.user.mark_away!(until_date: away_date)
     redirect_to root_path, notice: "Bis dann #{Current.user.name}!"
   end
 

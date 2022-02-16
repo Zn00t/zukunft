@@ -1,47 +1,51 @@
 <% row_class = "" %>
 <% row_class = "table-info" if Current.user.id == table_item.id %>
-<% row_class = "table-secondary" if !table_item.active %>
+<% row_class = "table-away" if !table_item.active %>
 <tr class=<%= row_class %>>
-  <th class='username'><%= table_item.name %></th>
-  <% class_name = "" %>
-  <% class_name = "table-danger" if table_item.sum >= 100 %>
-  <% class_name = "table-success" if table_item.sum <= -100 %>
-  <td class=<%= class_name %>><%= number_with_precision(table_item.sum, precision: 2, strip_insignificant_zeros: true) %></td>
-  <td><%= table_item.rate %></td>
-  <td><%= number_with_precision(table_item.food, precision: 2, strip_insignificant_zeros: true) %></td>
-  <td><%= number_with_precision(table_item.invest, precision: 2, strip_insignificant_zeros: true) %></td>
-  <td><%= table_item.cleaning %></td>
-  <% if table_item.cleaned == true %>
-    <td class="ticked"><%= image_tag "tick.png" %></td>
+  <% if row_class == "table-away" %>
+    <td class='username'><%= table_item.name %></td>
   <% else %>
-    <td></td>
-  <% end %>
-  <% if table_item.away.present? || User.where.not(:away => nil).present? %>
-    <% if table_item.away.present? %>
-      <td class="away_date"><%= "#{table_item.away.day}.#{table_item.away.month}.#{table_item.away.year}" %></td>
+    <th class='username'><%= table_item.name %></th>
+    <% end %>
+    <% class_name = "" %>
+    <% class_name = "table-danger" if table_item.sum >= 100 %>
+    <% class_name = "table-success" if table_item.sum <= -100 %>
+    <td class=<%= class_name %>><%= number_with_precision(table_item.sum, precision: 2, strip_insignificant_zeros: true) %></td>
+    <td><%= table_item.rate %></td>
+    <td><%= number_with_precision(table_item.food, precision: 2, strip_insignificant_zeros: true) %></td>
+    <td><%= number_with_precision(table_item.invest, precision: 2, strip_insignificant_zeros: true) %></td>
+    <td><%= table_item.cleaning %></td>
+    <% if table_item.cleaned == true %>
+      <td class="ticked"><%= image_tag "tick.png" %></td>
     <% else %>
       <td></td>
     <% end %>
-  <% end %>
-  <% if table_item.name == Current.user.name %>
-    <td>
-      <%= form_with url: edit_path(table_item.id), method: :get do |f| %>
-        <%= f.submit "eigene Daten ändern", class: "btn btn-info" %>
+    <% if table_item.away.present? || User.where.not(:away => nil).present? %>
+      <% if table_item.away.present? %>
+        <td class="away_date"><%= "#{table_item.away.day}.#{table_item.away.month}.#{table_item.away.year}" %></td>
+      <% else %>
+        <td></td>
       <% end %>
-    </td>
-    <% if Current.user.admin %>
-      <td></td>
     <% end %>
-  <% else %>
-    <td class="table-borderless">
-      <%= link_to "Umschichtung vorschlagen", restack_path(table_item), class: "btn btn-outline-secondary" %>
-    </td>
-    <% if Current.user.admin %>
+    <% if table_item.name == Current.user.name %>
       <td>
         <%= form_with url: edit_path(table_item.id), method: :get do |f| %>
-          <%= f.submit "Fremde Daten ändern", class: "btn btn-info" %>
+          <%= f.submit "eigene Daten ändern", class: "btn btn-info" %>
         <% end %>
       </td>
+      <% if Current.user.admin %>
+        <td></td>
+      <% end %>
+    <% else %>
+      <td class="table-borderless">
+        <%= link_to "Umschichtung vorschlagen", restack_path(table_item), class: "btn btn-outline-secondary" %>
+      </td>
+      <% if Current.user.admin %>
+        <td>
+          <%= form_with url: edit_path(table_item.id), method: :get do |f| %>
+            <%= f.submit "Fremde Daten ändern", class: "btn btn-info" %>
+          <% end %>
+        </td>
+      <% end %>
     <% end %>
-  <% end %>
-</tr>
+    </tr>

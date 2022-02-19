@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'home#index'
 
   get "password", to: "passwords#edit", as: "edit_password"

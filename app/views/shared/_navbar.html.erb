@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><%= image_tag("zukunft-logo-icon.png", :alt => "", :height => 50) %></a>
+    <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("zukunft-logo-icon.png", :alt => "", :height => 50) %></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,6 +19,14 @@
         <% end %>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "DE", root_path(locale: :de), class: "nav-link #{"active" if I18n.locale == :de}", method: :get%>
+        </li>
+        <li class="nav-item nav-link">|</li>
+        <li class="nav-item">
+          <%= link_to "EN", root_path(locale: :en), class: "nav-link #{"active" if I18n.locale == :en}", method: :get%>
+        </li>
+        <li class="nav-item nav-link"></li><li class="nav-item nav-link"></li><li class="nav-item nav-link"></li>
         <% if Current.user %>
           <li class="nav-item">
             <%= link_to t('changePassword'), edit_password_path, class: "nav-link" %>

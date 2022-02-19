@@ -30,4 +30,55 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  login: "Log In"
+
+  finances: "Finances"
+  admincorner: "Admin Corner"
+  changePassword: "Change Password"
+
+  newPassword: "New Password"
+  password: "Password"
+  confirmPassword: "Confirm Password"
+
+  headline: "Zukunft Finances"
+  shoppingButton: "I was shopping!"
+  save: "Save"
+  cancel: "Cancel"
+  cleaningButton: "I have cleaned!"
+  cleaningQuestion: "Are you sure?"
+  cleaningSubmit: "Sure!"
+
+  name: "Name"
+  sum: "Sum"
+  rate: "Weekly Rate"
+  food: "Food"
+  invest: "Invest"
+  cleaning: "Cleaning"
+  cleaned?: "Cleaned?"
+  awayUntil: "Away Until"
+  overallSum: "Overall sum"
+  changeOwnDate: "Modify Data"
+  suggestTransaction: "Suggest Transaction"
+  changeForeignData: "Modify foreign Data"
+
+  awayHeadline: "You Want to Go?! :("
+  awayUntilFlavor: "Until when are you away?"
+
+  alertNotLoggedInAsAdmin: "You have to be signed in as Admin to access this site!"
+  alertUserNotLoggedIn: "You have to be logged in to access that site!"
+  alertWasAdded: "was added."
+  alertWasActivated: "was activated."
+  alertWasDeactivated: "was deactivated."
+  alertUserAlreadyExists: "That User already exists!"
+  alertUpdatedPermissions: "Permissions updated."
+  alertValuesChanged: "Values changed successfully."
+  alertTransactionSuggested: "Transaction was suggested."
+  alertProvideValue: "Please provide a valid value."
+  alertValuesUpdated: "Values updated successfully."
+  alertSeeYa: "Bye, "
+  alertThankYou: "Thank you!"
+  alertPasswordChanged: "Your Password has been changed."
+  alertLoggedInSuccessfully: "Logged in successfully."
+  alertWrongCredentials: "Wrong username or password."
+  alertLoggedOut: "You were logged out successfully."
+

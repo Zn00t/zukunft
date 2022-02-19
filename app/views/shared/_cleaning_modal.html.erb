@@ -3,7 +3,7 @@
   <div class="col"></div>
   <div class="col">
     <button type="button" class="btn btn-primary cleaningButton" data-bs-toggle="modal" data-bs-target="#cleaningModal">
-      Ich hab geputzt!
+      <%= t('cleaningButton') %>
     </button>
   </div>
   <div class="col"></div>
@@ -14,17 +14,17 @@
   <div class="modal-dialog screenWidth">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="cleaningModalLabel">Ich hab geputzt!</h5>
+        <h5 class="modal-title" id="cleaningModalLabel"><%= t('cleaningButton') %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Hast du auch ganz sicher geputzt?</p>
+        <p><%= t('cleaningQuestion') %></p>
         <%= form_with method: :patch, url: "/cleaning" do |form| %>
-          <%= form.submit "Na klaa!", class: "btn btn-primary cleaningSubmitButton" %>
+          <%= form.submit t('cleaningSubmit'), class: "btn btn-primary cleaningSubmitButton" %>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t('cancel') %></button>
       </div>
     </div>
   </div>

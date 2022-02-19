@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Passwort ändern</h1>
+  <h1><%= t('changePassword') %></h1>
 
 
   <%= form_with model: Current.user, url: edit_password_path do |form| %>
@@ -12,17 +12,17 @@
     <% end %>
     <div class="container">
       <div class="mb-3">
-        <%= form.label :password, "neues Passwort" %>
-        <%= form.password_field :password, class: "form-control", placeholder: "Passwort" %>
+        <%= form.label :password, t('newPassword') %>
+        <%= form.password_field :password, class: "form-control", placeholder: t('password') %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :password_confirmation, "Passwort wiederholen" %>
-        <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Passwort wiederholen" %>
+        <%= form.label :password_confirmation, t('confirmPassword') %>
+        <%= form.password_field :password_confirmation, class: "form-control", placeholder: t('confirmPassword') %>
       </div>
 
       <div class="mb-3">
-        <%= form.submit "Passwort ändern", class: "btn btn-primary" %>
+        <%= form.submit t('changePassword'), class: "btn btn-primary" %>
       </div>
   <% end %>
   </div>

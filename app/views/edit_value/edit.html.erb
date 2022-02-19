@@ -6,6 +6,8 @@
   <%= form_with method: :patch do |values| %>
     <div class="row input_row">
       <div class="col">
+        <%= values.hidden_field :user_id %>
+        <%= hidden_field_tag :user_id, params[:id] %>
         <%= values.label t('rate').to_sym %><br>
         <%= values.text_field :rate, value: User.find(params[:id]).rate, class: "inputField" %>
       </div>

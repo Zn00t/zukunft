@@ -4,7 +4,9 @@ class EditValueController < ApplicationController
   end
 
   def update
-    if Current.user.update(params.permit(:rate, :food, :invest, :cleaning, :cleaned))
+    if Current.user.admin? && User.find(params[:id]).update(params.permit(:rate, :food, :invest, :cleaning, :cleaned))
+      redirect_to root_path, notice: "Finanzwerte erfolgreich geändert."
+    elsif Current.user.update(params.permit(:rate, :food, :invest, :cleaning, :cleaned))
       redirect_to root_path, notice: t('alertValuesChanged')
     else
       render edit

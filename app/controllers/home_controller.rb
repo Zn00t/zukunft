@@ -11,25 +11,25 @@ class HomeController < ApplicationController
   def foreign_restack
     Current.user.receive_money!(amount: @pending_restack.value, from: @pending_restack.from_id)
     @pending_restack.update(prompted: true)
-    redirect_to root_path, notice: "Werte aktualisiert"
+    redirect_to root_path, notice: t('alertValuesUpdated')
   end
 
   def away
     away_date = params[:return_date]
     Current.user.mark_away!(until_date: away_date)
-    redirect_to root_path, notice: "Bis dann #{Current.user.name}!"
+    redirect_to root_path, notice: "#{t('alertSeeYa')} #{Current.user.name}!"
   end
 
   def shopping
     if (params[:value].to_f > 0.0)
       Current.user.shopped_food(amount: params[:value].to_f)
-      redirect_to root_path, notice: "Danke dir!"
+      redirect_to root_path, notice: t('alertThankYou')
     end
   end
 
   def cleaning
     Current.user.cleaned!
-    redirect_to root_path, notice: "Danke!"
+    redirect_to root_path, notice: t('alertThankYou')
   end
 
   def checkrestacks

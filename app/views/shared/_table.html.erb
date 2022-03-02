@@ -1,15 +1,15 @@
 <table class="table table-bordered table-hover table-striped table-responsible table-overview">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Gesamt</th>
-    <th>Wochenrate</th>
-    <th>Betrag Essenskasse</th>
-    <th>Betrag Investitionskasse</th>
-    <th>Betrag Putzkasse</th>
-    <th>Geputzt?</th>
+    <th><%= t('name') %></th>
+    <th><%= t('sum') %></th>
+    <th><%= t('rate') %></th>
+    <th><%= t('food') %></th>
+    <th><%= t('invest') %></th>
+    <th><%= t('cleaning') %></th>
+    <th><%= t('cleaned?') %></th>
     <% if User.where.not(:away => nil).present? %>
-      <th>Weg bis zum</th>
+      <th><%= t('awayUntil') %></th>
     <% end %>
     <th></th>
     <% if Current.user.admin %>
@@ -21,7 +21,7 @@
     <%= render partial: "shared/table_item", object: user %>
   <% end %>
   <tr>
-    <th>Gesamt</th>
+    <th><%= t('overallSum') %></th>
     <td></td><td></td>
     <td>
       <%= number_with_precision(@user.map(&:food).sum, precision: 2, strip_insignificant_zeros: true) %>

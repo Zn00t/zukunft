@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Transaction</h5>
+    <h6 class="card-subtitle mb-2 text-muted">You get money from <%= User.find(@pending_restack.from_id).name %></h6>
+    <p> <%= User.find(@pending_restack.from_id).name %> suggests to send <%= @pending_restack.value %>€ over to you</p>
+    <%= button_to "Accept", foreign_restack_path, class: "btn btn-info" %>
+  </div>
+</div>

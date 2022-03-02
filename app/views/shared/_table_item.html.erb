@@ -30,7 +30,7 @@
     <% if table_item.name == Current.user.name %>
       <td>
         <%= form_with url: edit_path(table_item.id), method: :get do |f| %>
-          <%= f.submit "eigene Daten ändern", class: "btn btn-info" %>
+          <%= f.submit t('changeOwnDate'), class: "btn btn-info" %>
         <% end %>
       </td>
       <% if Current.user.admin %>
@@ -38,12 +38,12 @@
       <% end %>
     <% else %>
       <td class="table-borderless">
-        <%= link_to "Umschichtung vorschlagen", restack_path(table_item), class: "btn btn-outline-secondary" %>
+        <%= link_to t('suggestTransaction'), restack_path(table_item), class: "btn btn-outline-secondary" %>
       </td>
       <% if Current.user.admin %>
         <td>
           <%= form_with url: edit_path(table_item.id), method: :get do |f| %>
-            <%= f.submit "Fremde Daten ändern", class: "btn btn-info" %>
+            <%= f.submit t('changeForeignData'), class: "btn btn-info" %>
           <% end %>
         </td>
       <% end %>

@@ -1,4 +1,4 @@
-<h1>Umschichtung</h1>
+<h1>Transaktion</h1>
 <div class="container">
   <p>Wie viel Geld möchtest du <%= User.find(params[:id]).name %> übertragen?</p>
   <div class="row input_row">
@@ -8,7 +8,7 @@
         <%= f.text_field :value, placeholder: "Wert eintragen", class: "restack-text-field" %>
         </div>
         <div class="col align-self-center">
-          <%= f.submit class: "btn btn-outline-secondary" %>
+          <%= f.submit "Speichern", class: "btn btn-outline-secondary" %>
         </div>
       <% end %>
       </div>

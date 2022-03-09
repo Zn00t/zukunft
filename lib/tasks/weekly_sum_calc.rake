@@ -3,7 +3,7 @@ require_relative '../assets/telegram_shared.rb'
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
-    if Time.now.monday?
+    if Time.now.wednesday?
       User.all.each do |user|
         next unless user.away.nil?
         next unless user.active
@@ -14,10 +14,15 @@ namespace :dbcalc do
 
         # if user didn't clean, increase cleaning account
         # some users are exempt
+
+        exempt_users = ["Nini", "Pitt", "Alma"]
+
         if !user.cleaned &&
-            !["Nini", "Pitt", "Alma"].include?(user.name)
+            !exempt_users.include?(user.name)
           user.cleaning += 10
           puts "#{user.name} didn't clean! +10 for dirtyness!"
+        else
+          user.cleaned = false unless exempt_users.include?(user.name)
         end
         user.save
       end

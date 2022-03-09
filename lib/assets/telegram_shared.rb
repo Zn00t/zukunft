@@ -19,13 +19,13 @@ end
 
 def create_backup
   file = "storage/backups/#{Date.current.year}_KW#{Date.today.strftime("%U").to_i}.csv"
-  values = FinanceValue.order(:name)
-  headers = ["Name", "Essensrate", "Essenskasse", "Investitionskasse", "Putzkasse", "Geputzt?"]
+  values = User.order(:name)
+  headers = ["Aktiv", "Name", "Essensrate", "Essenskasse", "Investitionskasse", "Putzkasse", "Geputzt?", "Weg bis:"]
 
   CSV.open(file, 'w', headers: true) do |writer|
     writer << headers
     values.each do |value|
-      writer << [value.name, value.rate, value.food, value.invest, value.cleaning, value.cleaned]
+      writer << [value.active, value.name, value.rate, value.food, value.invest, value.cleaning, value.cleaned, value.away]
     end
   end
 end

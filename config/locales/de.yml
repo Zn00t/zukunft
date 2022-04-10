@@ -22,7 +22,7 @@ de:
   rate: "Wochenrate"
   food: "Essenskasse"
   invest: "Investitionskasse"
-  cleaning: "Putskasse"
+  cleaning: "Putzkasse"
   cleaned?: "Geputzt?"
   awayUntil: "Weg bis zum"
   overallSum: "Gesamtsumme"

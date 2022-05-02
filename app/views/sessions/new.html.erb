@@ -8,12 +8,12 @@
     </div>
 
     <div class="mb-3">
-      <%= form.label :password %>
-      <%= form.password_field :password, class: "form-control", placeholder: "Passwort" %>
+      <%= form.label t("password") %>
+      <%= form.password_field :password, class: "form-control", placeholder: t("password") %>
     </div>
 
     <div class="mb-3">
-      <%= form.submit "Einloggen", class: "btn btn-primary" %>
+      <%= form.submit t("login"), class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

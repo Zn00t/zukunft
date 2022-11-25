@@ -1,1 +1,1 @@
-ENV['wgpw'] = "googleistnichtdiezukunft"
+ENV['wgpw'] = Rails.apllication.credentials.dig(:wgpw)

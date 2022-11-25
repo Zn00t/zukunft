@@ -1,1 +1,1 @@
-ENV['wgpw'] = Rails.apllication.credentials.dig(:wgpw)
+ENV['wgpw'] = Rails.application.credentials.dig(:wgpw)

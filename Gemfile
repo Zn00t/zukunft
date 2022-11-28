@@ -24,6 +24,8 @@ gem 'jquery-rails'
 
 gem "rest-client"
 
+gem "whenever"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

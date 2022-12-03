@@ -1,6 +1,7 @@
 <% row_class = "" %>
 <% row_class = "table-info" if Current.user.id == table_item.id %>
 <% row_class = "table-away" if !table_item.active %>
+
 <tr class=<%= row_class %>>
   <% if row_class == "table-away" %>
     <td class='username'><%= table_item.name %></td>
@@ -48,4 +49,4 @@
         </td>
       <% end %>
     <% end %>
-    </tr>
+</tr>

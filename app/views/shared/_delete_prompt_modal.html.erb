@@ -1,0 +1,28 @@
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger deleteButton" data-bs-toggle="modal" data-bs-target="#deleteModal">
+      <%= "Löschen" %>
+    </button>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog screenWidth">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="DeleteModalLabel"><%= "#{user.name} Löschen" %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><%= "Bist du dir sicher, dass du #{user.name} endgültig Löschen möchtest?" %></p>
+        <%= form_for admincorner_path do |f| %>
+  <%= f.hidden_field :method, value: :delete %>
+  <%= f.hidden_field :id, value: user.id %>
+  <%= f.submit "!Löschen!", class: "btn btn-danger"%>
+<% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t('cancel') %></button>
+      </div>
+    </div>
+  </div>
+</div>

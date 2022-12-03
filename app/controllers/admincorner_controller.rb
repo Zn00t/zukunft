@@ -29,6 +29,12 @@ class AdmincornerController < ApplicationController
       User.update(params["/admincorner?locale=#{params[:locale]}"][:id], :admin => params["/admincorner?locale=#{params[:locale]}"][:admin])
       redirect_to admincorner_path, notice: t('alertUpdatedPermissions') and return
     end
+
+    if params["/admincorner?locale=#{params[:locale]}"][:method] == "delete"
+      User.update(params["/admincorner?locale=#{params[:locale]}"][:id], :deleted => true)
+      redirect_to admincorner_path, notice: t('alertUpdatedPermissions') and return
+    end
+
   end
 
 end

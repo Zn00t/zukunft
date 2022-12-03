@@ -18,7 +18,7 @@
   </tr>
   </thead>
   <% @user.each do |user| %>
-    <%= render partial: "shared/table_item", object: user %>
+    <%= render partial: "shared/table_item", object: user unless user.deleted %>
   <% end %>
   <tr>
     <th><%= t('overallSum') %></th>

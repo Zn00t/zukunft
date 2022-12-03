@@ -4,6 +4,7 @@
     <h5>deaktivierte User:</h5>
     <div class="list-group">
       <% @inactive_users.each do |user| %>
+        <% if !user.deleted %>
         <div class="list-group-item">
           <div class="row">
             <div class="col">
@@ -16,8 +17,12 @@
                 <%= f.submit "Aktivieren", class: "btn btn-info" %>
               <% end %>
             </div>
+            <div class="col"  >
+              <%= render partial: "shared/delete_prompt_modal", locals: {user: user, username: user.name} %>
+            </div>
           </div>
         </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -62,6 +67,7 @@
 <h4>Berechtigungen</h4>
 <div class="list-group permissions">
   <% @users.each do |user| %>
+    <% unless user.deleted %>
     <div class="list-group-item">
       <div class="row">
         <div class="col">
@@ -87,5 +93,6 @@
         </div>
       </div>
     </div>
+  <% end %>
   <% end %>
 </div>

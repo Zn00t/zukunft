@@ -1,5 +1,26 @@
 <h1>Adminbereich</h1>
 <div class="row">
+    <div class="col">
+    <h5>aktivierte User:</h5>
+    <div class="list-group">
+      <% @active_users.each do |user| %>
+        <div class="list-group-item">
+          <div class="row">
+            <div class="col">
+              <%= user.name %>
+            </div>
+            <div class="col">
+              <%= form_for admincorner_path do |f| %>
+                <%= f.hidden_field :method, value: :deactivate %>
+                <%= f.hidden_field :id, value: user.id %>
+                <%= f.submit "Deaktivieren", class: "btn btn-info" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <div class="col">
     <h5>deaktivierte User:</h5>
     <div class="list-group">
@@ -23,27 +44,6 @@
           </div>
         </div>
         <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div class="col">
-    <h5>aktivierte User:</h5>
-    <div class="list-group">
-      <% @active_users.each do |user| %>
-        <div class="list-group-item">
-          <div class="row">
-            <div class="col">
-              <%= user.name %>
-            </div>
-            <div class="col">
-              <%= form_for admincorner_path do |f| %>
-                <%= f.hidden_field :method, value: :deactivate %>
-                <%= f.hidden_field :id, value: user.id %>
-                <%= f.submit "Deaktivieren", class: "btn btn-info" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
       <% end %>
     </div>
   </div>

@@ -56,7 +56,7 @@ en:
   cleaning: "Cleaning"
   cleaned?: "Cleaned?"
   awayUntil: "Away Until"
-  overallSum: "Overall sum"
+  overallSum: "Sum"
   changeOwnDate: "Modify Data"
   suggestTransaction: "Suggest Transaction"
   changeForeignData: "Modify foreign Data"

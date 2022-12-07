@@ -25,7 +25,7 @@ de:
   cleaning: "Putzkasse"
   cleaned?: "Geputzt?"
   awayUntil: "Weg bis zum"
-  overallSum: "Gesamtsumme"
+  overallSum: "Summe"
   changeOwnDate: "Daten ändern"
   suggestTransaction: "Transaktion vorschlagen"
   changeForeignData: "Fremde Daten ändern"

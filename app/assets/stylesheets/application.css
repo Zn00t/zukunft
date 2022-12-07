@@ -17,6 +17,9 @@
 .table {
     font-size: calc(13px + 0.200625vw);
 }
+.table .btn {
+    font-size: calc(13px + 0.200625vw);
+}
 
 .btn {
     width: 100%;

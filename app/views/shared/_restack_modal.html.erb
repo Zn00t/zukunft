@@ -1,0 +1,26 @@
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#restackModal">
+      <%= t('restackButton') %>
+    </button>
+
+<!-- Modal -->
+<div class="modal fade" id="restackModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog screenWidth">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="restackModalLabel"><%= t('restackButton') %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><%= t('restackQuestion') %></p>
+        <%= form_with method: :post, url: "/restack/#{table_item.id}" do |form| %>
+          <%= form.text_field :value, class: "inputField" %>
+          <%= form.submit t('save'), class: "btn btn-primary cleaningSubmitButton" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t('cancel') %></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -39,7 +39,9 @@
       <% end %>
     <% else %>
       <td class="table-borderless">
-        <%= link_to t('suggestTransaction'), restack_path(table_item), class: "btn btn-outline-secondary" %>
+<!--        <%= link_to t('suggestTransaction'), restack_path(table_item), class: "btn btn-outline-secondary" %>
+-->     
+<%= render partial: "shared/restack_modal", locals: {table_item: table_item} %>
       </td>
       <% if Current.user.admin %>
         <td>

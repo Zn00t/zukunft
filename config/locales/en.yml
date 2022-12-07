@@ -81,4 +81,6 @@ en:
   alertLoggedInSuccessfully: "Logged in successfully."
   alertWrongCredentials: "Wrong username or password."
   alertLoggedOut: "You were logged out successfully."
-
+  
+  restackButton: "suggest transaction"
+  restackQuestion: "How much money do you want to send?"

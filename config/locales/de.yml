@@ -50,4 +50,6 @@ de:
   alertLoggedInSuccessfully: "Erfolgreich eingeloggt."
   alertWrongCredentials: "Falscher Benutzername oder Passwort."
   alertLoggedOut: "Erfolgreich ausgeloggt."
-
+  
+  restackButton: "Umschichtung vorschlagen"
+  restackQuestion: "Wie viel möchtest du übertragen?"

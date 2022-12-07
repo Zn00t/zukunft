@@ -13,15 +13,12 @@ class EditValueController < ApplicationController
     end
   end
 
-  def restack
-  end
-
   def upload_restack
-    if params[:value] != "" &&
+    if params[:value].to_i > 0 &&
       Restack.create(from_id: Current.user.id, to_id: params[:id], value: params[:value], user_id: Current.user.id, prompted: false)
       redirect_to root_path, notice: t('alertTransactionSuggested')
     else
-      redirect_to restack_path, alert: t('alertProvideValue')
+      redirect_to root_path, alert: t('alertProvideValue')
     end
   end
 end

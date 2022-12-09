@@ -9,7 +9,7 @@
 server 'km-rails', user: 'deploy', roles: %w{app db web}
 
 set :deploy_to, "/home/deploy/finanzapp/"
-
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # role-based syntax
 # ==================

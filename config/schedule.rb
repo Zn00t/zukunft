@@ -19,8 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :output, "log/cron.log"
 
-every :monday, at "6:00pm do
+every :monday, at: "6:00pm" do
 
   rake "dbcalc:weekly_sum"
 

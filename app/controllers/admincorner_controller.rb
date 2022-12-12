@@ -34,6 +34,11 @@ class AdmincornerController < ApplicationController
       User.update(params["/admincorner?locale=#{params[:locale]}"][:id], :deleted => true)
       redirect_to admincorner_path, notice: t('alertUpdatedPermissions') and return
     end
+    
+    if params["/admincorner?locale=#{params[:locale]}"][:method] == "resetpw"
+      User.update(params["/admincorner?locale=#{params[:locale]}"][:id], :password => params["/admincorner?locale=#{params[:locale]}"][:newpw])
+      redirect_to admincorner_path, notice: t('alertUpdatedPermissions') and return
+    end
 
   end
 

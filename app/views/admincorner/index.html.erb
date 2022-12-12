@@ -3,19 +3,22 @@
     <div class="col">
     <h5>aktivierte User:</h5>
     <div class="list-group">
-      <% @active_users.each do |user| %>
+      <% @active_users.each do |u| %>
         <div class="list-group-item">
           <div class="row">
             <div class="col">
-              <%= user.name %>
+              <%= u.name %>
             </div>
-            <div class="col">
+              <div class="col">
               <%= form_for admincorner_path do |f| %>
                 <%= f.hidden_field :method, value: :deactivate %>
-                <%= f.hidden_field :id, value: user.id %>
+                <%= f.hidden_field :id, value: u.id %>
                 <%= f.submit "Deaktivieren", class: "btn btn-info" %>
               <% end %>
-            </div>
+              </div>
+              <div class="col">
+                <%= render partial: "shared/reset_password_modal", locals: {user: u} %>
+              </div>
           </div>
         </div>
       <% end %>

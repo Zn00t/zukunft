@@ -14,7 +14,7 @@
       <div class="modal-body">
         <p><%= t('restackQuestion') %></p>
         <%= form_with method: :post, url: "/restack/#{table_item.id}" do |form| %>
-          <%= form.text_field :value, class: "inputField" %>
+          <%= form.text_field :value, class: "inputField", :autocomplete => :off %>
           <%= form.submit t('save'), class: "btn btn-primary cleaningSubmitButton" %>
         <% end %>
       </div>

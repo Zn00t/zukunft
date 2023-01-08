@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#restackModal">
+<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target=<%="#restackModal#{table_item.id}"%>>
       <%= t('restackButton') %>
     </button>
 
 <!-- Modal -->
-<div class="modal fade" id="restackModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id=<%="restackModal#{table_item.id}"%> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog screenWidth">
     <div class="modal-content">
       <div class="modal-header">

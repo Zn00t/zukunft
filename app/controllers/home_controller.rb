@@ -9,9 +9,16 @@ class HomeController < ApplicationController
   end
 
   def foreign_restack
-    Current.user.receive_money!(amount: @pending_restack.value, from: @pending_restack.from_id)
-    @pending_restack.update(prompted: true)
-    redirect_to root_path, notice: t('alertValuesUpdated')
+    if params["/?locale=#{params[:locale]}"][:action] == "accept"
+      restack = Restack.find(params["/?locale=#{params[:locale]}"][:restack_id])
+      Current.user.receive_money!(amount: restack.value, from: restack.from_id)
+      restack.update(prompted: true)
+      redirect_to root_path, notice: t('alertValuesUpdated')
+    elsif params["/?locale=#{params[:locale]}"][:action] == "decline"
+      restack = Restack.find(params["/?locale=#{params[:locale]}"][:restack_id])
+      restack.update(prompted: true, Cancelled: true)
+      redirect_to root_path, warning: t("transactionDeclined")
+    end
   end
 
   def away
@@ -33,7 +40,7 @@ class HomeController < ApplicationController
   end
 
   def checkrestacks
-    @pending_restack = Restack.where(:prompted => false, :to_id => Current.user.id).first
+    @pending_restacks = Restack.where(:prompted => false, :to_id => Current.user.id)
   end
 
   def calcsum

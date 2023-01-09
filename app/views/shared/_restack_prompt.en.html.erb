@@ -1,8 +1,26 @@
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Transaction</h5>
-    <h6 class="card-subtitle mb-2 text-muted">You get money from <%= User.find(@pending_restack.from_id).name %></h6>
-    <p> <%= User.find(@pending_restack.from_id).name %> suggests to send <%= @pending_restack.value %>€ over to you</p>
-    <%= button_to "Accept", foreign_restack_path, class: "btn btn-info" %>
+<% @pending_restacks.each do |r| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Transaction</h5>
+      <h6 class="card-subtitle mb-2 text-muted">You receive money from <%= User.find(r.from_id).name %></h6>
+      <p><%= User.find(r.from_id).name %> suggests to send <%= r.value %>€ to you.</p>
+      <div class="row">
+        <div class ="col-7">
+          <%= form_for foreign_restack_path do |f| %>
+            <%= f.hidden_field :action, value: "accept" %>
+            <%= f.hidden_field :restack_id, value: r.id %>
+            <%= f.submit "Accept", class: "btn btn-info" %>
+          <% end %>
+
+        </div>
+        <div class="col-5">
+          <%= form_for foreign_restack_path do |f| %>
+            <%= f.hidden_field :action, value: "decline" %>
+            <%= f.hidden_field :restack_id, value: r.id %>
+            <%= f.submit "Decline", class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>

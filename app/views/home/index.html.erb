@@ -3,7 +3,7 @@
 </div>
 <div class="container">
   <% if Current.user.present? %>
-    <% if @pending_restack != nil %>
+    <% if @pending_restacks != nil %>
       <%= render partial: "shared/restack_prompt" %>
     <% end %>
     <div class="row">
@@ -17,6 +17,6 @@
 
     <%= render partial: "shared/table" %>
 
-      <%= render partial: "shared/away" %>
+    <%= render partial: "shared/away" %>
   <% end %>
 </div>

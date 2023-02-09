@@ -22,7 +22,6 @@
 set :output, "log/cron.log"
 
 every :monday, at: "6:00pm" do
-
+  rake "dbcalc:send_mail"
   rake "dbcalc:weekly_sum"
-
 end

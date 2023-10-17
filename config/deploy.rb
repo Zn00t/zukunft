@@ -4,8 +4,8 @@ lock "~> 3.17.1"
 set :application, "Zukunftfinances"
 set :repo_url, "git@github.com:Zn00t/zukunft.git"
 
-set :rvm_type, :system
-set :rvm_version, '2.7.2'
+set :rvm_type, :user
+set :rvm_version, '3.0.0'
 set :user_sudo, false
 set :passenger_restart_with_touch, true
 

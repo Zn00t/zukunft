@@ -18,8 +18,13 @@ h5 {
 }
 .admin-checkbox {
   transform: scale(2,2);
-  float: right;
   margin: 10px;
+}
+.checkbox-container {
+  text-align: center;
+}
+.user-management-header {
+  text-align: center;
 }
 .permissions {
   margin-bottom: 5rem;

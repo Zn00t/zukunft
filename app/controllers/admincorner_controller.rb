@@ -7,6 +7,7 @@ class AdmincornerController < ApplicationController
     @users = User.all
     @inactive_users = User.where(active: false)
     @active_users = User.where(active: true)
+    @excepted_users = User.where(excepted: true)
   end
 
   def change
@@ -26,7 +27,10 @@ class AdmincornerController < ApplicationController
       redirect_to admincorner_path, notice: "#{User.find_by_name(params["/admincorner?locale=#{params[:locale]}"][:name]).name} #{t('alertWasAdded')}"
     end
     if params["/admincorner?locale=#{params[:locale]}"][:method] == "admin_checkbox"
-      User.update(params["/admincorner?locale=#{params[:locale]}"][:id], :admin => params["/admincorner?locale=#{params[:locale]}"][:admin])
+      User.update(
+        params["/admincorner?locale=#{params[:locale]}"][:id],
+        :admin => params["/admincorner?locale=#{params[:locale]}"][:admin],
+        :excepted => params["/admincorner?locale=#{params[:locale]}"][:excepted])
       redirect_to admincorner_path, notice: t('alertUpdatedPermissions') and return
     end
 

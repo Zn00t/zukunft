@@ -13,8 +13,19 @@ h5 {
 }
 .add-user-field {
   margin-left: 1rem;
-  width: 80%;
   font-size: 15pt;
+  padding: 3px;
+  border: 1px solid #555555;
+  border-radius: 3px;
+}
+.add-room-description {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 12pt;
+  padding: 6px 6px 50px;
+  border: 1px solid #555555;
+  border-radius: 3px;
 }
 .admin-checkbox {
   transform: scale(2,2);

@@ -68,6 +68,12 @@ class AdmincornerController < ApplicationController
       Room.find(params["/admincorner?locale=#{params[:locale]}"][:id]).delete!
       redirect_to admincorner_path, notice: "Raum gelöscht" and return
     end
+
+    if params["/admincorner?locale=#{params[:locale]}"][:method] == "edit_room"
+      Room.find(params["/admincorner?locale=#{params[:locale]}"][:id])
+          .update_description!(params["/admincorner?locale=#{params[:locale]}"][:newDescription])
+      redirect_to admincorner_path, notice: "Beschreibung aktualisiert" and return
+    end
   end
 
 end

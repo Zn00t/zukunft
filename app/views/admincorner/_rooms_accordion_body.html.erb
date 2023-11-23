@@ -16,6 +16,9 @@
                   <%= f.submit "Deaktivieren", class: "btn btn-info" %>
                 <% end %>
               </div>
+              <div class="col">
+                <%= render partial: "edit_room_modal", locals: { room: r } %>
+              </div>
             </div>
           </div>
         <% end %>
@@ -26,40 +29,45 @@
       <div class="list-group">
         <% @inactive_rooms.each do |r| %>
           <% unless r.deleted %>
-        <div class="list-group-item">
-                <div class="row">
-                  <div class="col">
-                    <%=  r.name  %>
-                  </div>
-                  <div class="col">
-                    <%=  form_for admincorner_path do |f|  %>
-                    <%= f.hidden_field :method, value: :activate_room %>
-                    <%=  f.hidden_field :id, value: r.id  %>
-                    <%= f.submit "Aktivieren", class: "btn btn-info" %>
-                    <%  end %>
-                  </div>
-                  <div class="col">
-                    <%=  render partial: "shared/delete_prompt_modal", locals: { user: r }  %>
-                  </div>
+            <div class="list-group-item">
+              <div class="row">
+                <div class="col">
+                  <%= r.name %>
                 </div>
-        </div>
-        <%  end %>
+                <div class="col">
+                  <%= form_for admincorner_path do |f| %>
+                    <%= f.hidden_field :method, value: :activate_room %>
+                    <%= f.hidden_field :id, value: r.id %>
+                    <%= f.submit "Aktivieren", class: "btn btn-info" %>
+                  <% end %>
+                </div>
+                <div class="col">
+                  <%= render partial: "shared/delete_prompt_modal", locals: { user: r } %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
-  <h5>User hinzufügen:</h5>
-  <p>Jeder User hat das Standardpasswort "zukunft". Das Passwort kann jederzeit geändert werden.</p>
+  <h5>Raum hinzufügen:</h5>
   <%= form_for admincorner_path do |f| %>
     <%= f.hidden_field :method, value: :add_room %>
     <div class="row add-user-row">
-      <div class="col">
+      <div class="col-1">
         <%= f.label "Name:" %>
-        <%= f.text_field :name, class: "add-user-field" %>
-        <%= f.label "Beschreibung:" %>
-        <%= f.text_field :description, class: "add_room_description" %>
       </div>
-      <div class="col">
+      <div class="col-3">
+        <%= f.text_field :name, class: "add-user-field" %>
+      </div>
+      <div class="col-1">
+        <%= f.label "Beschreibung:", class: "align-top" %>
+      </div>
+      <div class="col-5">
+        <%= f.text_area :description, class: "add-room-description" %>
+      </div>
+      <div class="col-2">
         <%= f.submit "Hinzufügen", class: "btn btn-info" %>
       </div>
     </div>

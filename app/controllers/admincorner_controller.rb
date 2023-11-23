@@ -8,6 +8,8 @@ class AdmincornerController < ApplicationController
     @inactive_users = User.where(active: false)
     @active_users = User.where(active: true)
     @excepted_users = User.where(excepted: true)
+    @active_rooms = Room.where(active: true)
+    @inactive_rooms = Room.where(active: false)
   end
 
   def change
@@ -38,12 +40,34 @@ class AdmincornerController < ApplicationController
       User.update(params["/admincorner?locale=#{params[:locale]}"][:id], :deleted => true)
       redirect_to admincorner_path, notice: t('alertUpdatedPermissions') and return
     end
-    
+
     if params["/admincorner?locale=#{params[:locale]}"][:method] == "resetpw"
       User.update(params["/admincorner?locale=#{params[:locale]}"][:id], :password => params["/admincorner?locale=#{params[:locale]}"][:newpw])
       redirect_to admincorner_path, notice: t('alertUpdatedPermissions') and return
     end
 
+    if params["/admincorner?locale=#{params[:locale]}"][:method] == "activate_room"
+      Room.find(params["/admincorner?locale=#{params[:locale]}"][:id]).activate!
+      redirect_to admincorner_path, notice: "Raum aktiviert" and return
+    end
+
+    if params["/admincorner?locale=#{params[:locale]}"][:method] == "deactivate_room"
+      Room.find(params["/admincorner?locale=#{params[:locale]}"][:id]).deactivate!
+      redirect_to admincorner_path, notice: "Raum deaktiviert" and return
+    end
+
+    if params["/admincorner?locale=#{params[:locale]}"][:method] == "add_room"
+      if Room.find_by_name(params["/admincorner?locale=#{params[:locale]}"][:name])
+        redirect_to admincorner_path, alert: "Den Raum gibts schon!" and return
+      end
+      Room.create(:name => params["/admincorner?locale=#{params[:locale]}"][:name], :description => "zukunft")
+      redirect_to admincorner_path, notice: "#{Room.find_by_name(params["/admincorner?locale=#{params[:locale]}"][:name]).name} angebaut"
+    end
+
+    if params["/admincorner?locale=#{params[:locale]}"][:method] == "delete_room"
+      Room.find(params["/admincorner?locale=#{params[:locale]}"][:id]).delete!
+      redirect_to admincorner_path, notice: "Raum gelöscht" and return
+    end
   end
 
 end

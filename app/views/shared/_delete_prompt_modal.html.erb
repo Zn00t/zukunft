@@ -14,7 +14,7 @@
       <div class="modal-body">
         <p><%= "Bist du dir sicher, dass du #{user.name} endgültig Löschen möchtest?" %></p>
         <%= form_for admincorner_path do |f| %>
-  <%= f.hidden_field :method, value: :delete %>
+  <%= f.hidden_field :method, value: "delete#{"_room" if user.class == Room}" %>
   <%= f.hidden_field :id, value: user.id %>
   <%= f.submit "! Löschen !", class: "btn btn-danger"%>
 <% end %>

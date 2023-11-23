@@ -1,0 +1,67 @@
+<div class="accordion-body">
+  <div class="row">
+    <div class="col">
+      <h5>aktivierte Räume:</h5>
+      <div class="list-group">
+        <% @active_rooms.each do |r| %>
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col">
+                <%= r.name %>
+              </div>
+              <div class="col">
+                <%= form_for admincorner_path do |f| %>
+                  <%= f.hidden_field :method, value: :deactivate_room %>
+                  <%= f.hidden_field :id, value: r.id %>
+                  <%= f.submit "Deaktivieren", class: "btn btn-info" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <h5>deaktivierte Räume:</h5>
+      <div class="list-group">
+        <% @inactive_rooms.each do |r| %>
+          <% unless r.deleted %>
+        <div class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <%=  r.name  %>
+                  </div>
+                  <div class="col">
+                    <%=  form_for admincorner_path do |f|  %>
+                    <%= f.hidden_field :method, value: :activate_room %>
+                    <%=  f.hidden_field :id, value: r.id  %>
+                    <%= f.submit "Aktivieren", class: "btn btn-info" %>
+                    <%  end %>
+                  </div>
+                  <div class="col">
+                    <%=  render partial: "shared/delete_prompt_modal", locals: { user: r }  %>
+                  </div>
+                </div>
+        </div>
+        <%  end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <h5>User hinzufügen:</h5>
+  <p>Jeder User hat das Standardpasswort "zukunft". Das Passwort kann jederzeit geändert werden.</p>
+  <%= form_for admincorner_path do |f| %>
+    <%= f.hidden_field :method, value: :add_room %>
+    <div class="row add-user-row">
+      <div class="col">
+        <%= f.label "Name:" %>
+        <%= f.text_field :name, class: "add-user-field" %>
+        <%= f.label "Beschreibung:" %>
+        <%= f.text_field :description, class: "add_room_description" %>
+      </div>
+      <div class="col">
+        <%= f.submit "Hinzufügen", class: "btn btn-info" %>
+      </div>
+    </div>
+  <% end %>
+</div>

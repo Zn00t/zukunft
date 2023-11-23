@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_21_162313) do
+ActiveRecord::Schema.define(version: 2023_11_23_220637) do
 
   create_table "finance_values", force: :cascade do |t|
     t.string "name"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2023_11_21_162313) do
     t.boolean "prompted"
     t.boolean "Cancelled"
     t.index ["user_id"], name: "index_restacks_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.boolean "active"
+    t.boolean "deleted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

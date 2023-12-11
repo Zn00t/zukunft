@@ -60,7 +60,8 @@ class AdmincornerController < ApplicationController
       if Room.find_by_name(params["/admincorner?locale=#{params[:locale]}"][:name])
         redirect_to admincorner_path, alert: "Den Raum gibts schon!" and return
       end
-      Room.create(:name => params["/admincorner?locale=#{params[:locale]}"][:name], :description => "zukunft")
+      Room.create(:name => params["/admincorner?locale=#{params[:locale]}"][:name],
+                  :description => params["/admincorner?locale=#{params[:locale]}"][:description])
       redirect_to admincorner_path, notice: "#{Room.find_by_name(params["/admincorner?locale=#{params[:locale]}"][:name]).name} angebaut"
     end
 

@@ -15,6 +15,8 @@ class User < ApplicationRecord
   attribute :invest, :float, default: 0
   attribute :cleaning, :integer, default: 0
 
+  scope :active, -> { where(active: true) }
+
   def total_debt
     food + invest + cleaning
   end

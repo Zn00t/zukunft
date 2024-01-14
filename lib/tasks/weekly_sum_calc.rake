@@ -3,6 +3,7 @@ require_relative '../assets/telegram_shared.rb'
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
+
     if Time.now.monday?
       User.all.each do |user|
         next unless user.away.nil?
@@ -48,6 +49,9 @@ namespace :dbcalc do
         user.save
       end
     end
+
+    # sending notices to people with >100 debt
+    Notifications.notify_heavy_debt!
   end
 
   task :send_mail => :environment do

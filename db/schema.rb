@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_09_135946) do
+ActiveRecord::Schema.define(version: 2024_01_14_150241) do
 
   create_table "finance_values", force: :cascade do |t|
     t.string "name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_01_09_135946) do
     t.boolean "cleaned", default: false, null: false
     t.date "away"
     t.boolean "deleted", default: false
+    t.integer "telegram_id"
   end
 
   add_foreign_key "finance_values", "users"

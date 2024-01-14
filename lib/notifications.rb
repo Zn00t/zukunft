@@ -14,6 +14,6 @@ module Notifications
   private
   # memoized chat object
   def chat
-    @chat ||= Chat.new(token: Rails.application.credentials.tokens.der_typ_der_kontrolliert)
+    @chat ||= Chat.new(token: Rails.application.credentials.tokens[:der_typ_der_kontrolliert])
   end
 end

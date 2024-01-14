@@ -51,7 +51,9 @@ namespace :dbcalc do
     end
 
     # sending notices to people with >100 debt
-    Notifications.notify_heavy_debt!
+    if Time.now.wednesday?
+      Notifications.notify_heavy_debt!
+    end
   end
 
   task :send_mail => :environment do

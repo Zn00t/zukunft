@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_15_095026) do
+ActiveRecord::Schema.define(version: 2024_01_15_214910) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2024_01_15_095026) do
     t.boolean "cleaned", default: false, null: false
     t.date "away"
     t.boolean "deleted", default: false
-    t.integer "telegram_id"
+    t.bigint "telegram_id"
   end
 
   add_foreign_key "finance_values", "users"

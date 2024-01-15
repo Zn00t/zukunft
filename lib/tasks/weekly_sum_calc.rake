@@ -5,9 +5,8 @@ namespace :dbcalc do
   task :weekly_sum => :environment do
 
     if Time.now.monday?
-      User.all.each do |user|
+      User.active.each do |user|
         next unless user.away.nil?
-        next unless user.active
 
         # increase food
         user.food += user.rate

@@ -6,7 +6,7 @@ class AdmincornerController < ApplicationController
     end
     @users = User.all
     @inactive_users = User.where(active: false)
-    @active_users = User.where(active: true)
+    @active_users = User.active
   end
 
   def change

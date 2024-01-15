@@ -53,3 +53,7 @@ de:
   
   restackButton: "Umschichtung vorschlagen"
   restackQuestion: "Wie viel möchtest du übertragen?"
+
+  time:
+    formats:
+      long: '%c'

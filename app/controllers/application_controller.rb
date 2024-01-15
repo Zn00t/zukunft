@@ -12,8 +12,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user
+    Current.user
+  end
+
   def require_user_logged_in!
     redirect_to sign_in_path, alert: t('alertUserNotLoggedIn') if Current.user.nil?
+  end
+
+  def access_denied(exception)
+    head :forbidden
   end
 
   def switch_locale(&action)

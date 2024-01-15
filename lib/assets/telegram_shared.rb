@@ -5,7 +5,7 @@ klingel_id = -1001149902183
 
 def send_to_klingel(message)
   chat_id = -1001149902183
-  bot_token = ENV['BOT_TOKEN']
+  bot_token = Rails.application.credentials.BOT_TOKEN
   url = "https://api.telegram.org/bot#{bot_token}/sendMessage"
   RestClient.post(url, chat_id: chat_id, text: message)
   puts "test"
@@ -13,11 +13,11 @@ end
 
 def send_backup_to_klingel
   create_backup()
-  bot_token = Rails.application.credentials.dig(:BOT_TOKEN)
+  bot_token = Rails.application.credentials.BOT_TOKEN
   chat_id = -1001149902183
-  file = File.open("storage/backups/#{Date.current.year}_KW#{Date.today.strftime("%U").to_i}.csv")
+  file = File.open("storage/backups/#{Date.current.year}_KW#{Date.today.strftime("%U").to_i}.csv", 'r')
   url = "https://api.telegram.org/bot#{bot_token}/sendDocument"
-  RestClient.post(url, chat_id: chat_id, document: File.open(file, 'r'))
+  RestClient.post(url, chat_id: chat_id, document: file)
 end
 
 def create_backup

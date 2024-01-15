@@ -44,6 +44,7 @@ ActiveAdmin.register User do
     column :name
     toggle_bool_column :admin
     toggle_bool_column :active
+    column :telegram_id
     column :away
     column :cleaned
     actions

@@ -57,3 +57,6 @@ de:
   time:
     formats:
       long: '%c'
+  date:
+    formats:
+      long: '%d.%m.%Y'

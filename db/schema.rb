@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 2024_01_15_214910) do
     t.index ["user_id"], name: "index_restacks_on_user_id"
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.boolean "active"
+    t.boolean "deleted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "password_digest"
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 2024_01_15_214910) do
     t.boolean "cleaned", default: false, null: false
     t.date "away"
     t.boolean "deleted", default: false
+    t.boolean "excepted", default: false
     t.bigint "telegram_id"
   end
 

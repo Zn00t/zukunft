@@ -1,0 +1,53 @@
+<div class="accordion-body">
+  <h4>User Management</h4>
+  <div class="list-group permissions">
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col">
+          Name
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col user-management-header">
+              Putzdienst ausgenommen
+            </div>
+            <div class="col user-management-header">
+              Admin
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% @users.each do |user| %>
+      <% unless user.deleted %>
+        <div class="list-group-item">
+          <div class="row">
+            <div class="col">
+              <%= user.name %>
+            </div>
+            <div class="col">
+              <%= form_for admincorner_path do |f| %>
+                <%= f.hidden_field :method, value: :admin_checkbox %>
+                <%= f.hidden_field :id, value: user.id %>
+                <div class="row">
+                  <div class="col checkbox-container">
+                    <%= f.check_box :excepted, class: "admin-checkbox", checked: user.excepted %>
+                  </div>
+                  <div class="col checkbox-container">
+                    <%= f.check_box :admin, class: "admin-checkbox", checked: user.admin %>
+                  </div>
+                  <div class="col">
+                    <%= f.submit "Update", class: "btn btn-info" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

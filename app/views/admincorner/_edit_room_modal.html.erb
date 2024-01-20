@@ -1,0 +1,30 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary pwresetButton" data-bs-toggle="modal" data-bs-target= <%= "#editRoomModal#{room.id}"%>>
+  <%= "Raum bearbeiten" %>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id= <%="editRoomModal#{room.id}"%> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog screenWidth">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit_roomLabel"><%= "#{room.name} bearbeiten" %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><%= "Neue Beschreibung:" %></p>
+        <%= form_for admincorner_path do |f| %>
+          <%= f.hidden_field :method, value: :edit_room %>
+          <%= f.hidden_field :id, value: room.id %>
+          <%= f.text_area :newDescription, value: room.description, class: "add-room-description" %>
+          <%= f.submit "Speichern", class: "btn btn-primary"%>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t('cancel') %></button>
+      </div>
+    </div>
+  </div>
+</div>
+

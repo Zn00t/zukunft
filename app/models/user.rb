@@ -14,6 +14,7 @@ class User < ApplicationRecord
   attribute :food, :float, default: 0
   attribute :invest, :float, default: 0
   attribute :cleaning, :integer, default: 0
+  attribute :excepted, :boolean, default: false
 
   scope :active, -> { where(active: true) }
 

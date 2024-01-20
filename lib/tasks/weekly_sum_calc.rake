@@ -13,16 +13,12 @@ namespace :dbcalc do
         puts "#{user.name}'s sum updated (+#{user.rate})"
 
         # if user didn't clean, increase cleaning account
-        # some users are exempt
 
-        exempt_users = ["Nini", "Pitt", "Alma"]
-
-        if !user.cleaned &&
-            !exempt_users.include?(user.name)
+        if !user.cleaned && !user.excepted
           user.cleaning += 10
           puts "#{user.name} didn't clean! +10 for dirtyness!"
         else
-          user.cleaned = false unless exempt_users.include?(user.name)
+          user.cleaned = false unless user.excepted
         end
         user.save
       end

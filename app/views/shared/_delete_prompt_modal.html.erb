@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger deleteButton" data-bs-toggle="modal" data-bs-target= <%="#deleteModal#{user.id}"%>>
-      <%= "Löschen" %>
-    </button>
+<button type="button" class="btn btn-danger deleteButton" data-bs-toggle="modal" data-bs-target= <%= "#deleteModal#{user.id}" %>>
+  <%= "Löschen" %>
+</button>
 
 <!-- Modal -->
-<div class="modal fade" id= <%="deleteModal#{user.id}"%> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id=<%= "deleteModal#{user.id}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog screenWidth">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,10 +14,10 @@
       <div class="modal-body">
         <p><%= "Bist du dir sicher, dass du #{user.name} endgültig Löschen möchtest?" %></p>
         <%= form_for admincorner_path do |f| %>
-  <%= f.hidden_field :method, value: "delete#{"_room" if user.class == Room}" %>
-  <%= f.hidden_field :id, value: user.id %>
-  <%= f.submit "! Löschen !", class: "btn btn-danger"%>
-<% end %>
+          <%= f.hidden_field :method, value: "delete#{"_room" if user.class == Room}" %>
+          <%= f.hidden_field :id, value: user.id %>
+          <%= f.submit "! Löschen !", class: "btn btn-danger" %>
+        <% end %>
 
       </div>
       <div class="modal-footer">

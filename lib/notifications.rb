@@ -3,11 +3,11 @@ module Notifications
 
 
   def notify_heavy_debt!
-    debt_users = User.active.where('food + cleaning + invest > ?', 100)
-    debt_users.map!{|u| chat.user_mention(u.name, u.telegram_id)}
+    debt_users = User.active.where('food + cleaning + invest > ?', 100).all
+    debt_users = debt_users.map{|u| chat.user_mention(u.name, u.telegram_id)}
 
-    plus_users = User.active.select(:id, :name, :telegram_id, "(food + invest + cleaning) AS sum").order(sum: :desc).limit(3)
-    plus_users.map!{|u| chat.user_mention(u.name, u.telegram_id)}
+    plus_users = User.active.select(:id, :name, :telegram_id, "(food + invest + cleaning) AS sum").order(sum: :desc).limit(3).all
+    plus_users = plus_users.map{|u| chat.user_mention(u.name, u.telegram_id)}
     chat.send_message("#{debt_users.join(' ')} haben mehr als 100euro schulden.\nBitte sendet etwas an #{plus_users.join(' ')}. Dankee!")
   end
 

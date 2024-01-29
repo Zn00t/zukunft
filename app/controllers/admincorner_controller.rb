@@ -1,9 +1,7 @@
 class AdmincornerController < ApplicationController
+  before_action :enforce_admin_user
 
   def index
-    if Current.user == nil || Current.user.admin == false
-      redirect_to root_path, alert: t('alertNotLoggedInAsAdmin') and return
-    end
     @users = User.all
     @inactive_users = User.where(active: false)
     @active_users = User.where(active: true)
@@ -77,4 +75,10 @@ class AdmincornerController < ApplicationController
     end
   end
 
+  private
+  def enforce_admin_user
+    if Current.user == nil || Current.user.admin == false
+      redirect_to root_path, alert: t('alertNotLoggedInAsAdmin') and return
+    end
+  end
 end

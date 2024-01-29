@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :admin, :active, :rate, :food, :invest, :cleaning, :cleaned, :away, :deleted, :telegram_id
+  permit_params :name, :admin, :active, :rate, :food, :invest, :cleaning, :cleaned, :away, :deleted, :telegram_id, :excepted
   #
   # or
   #
@@ -22,6 +22,7 @@ ActiveAdmin.register User do
       input :active
       input :admin
       input :telegram_id
+      input :excepted
       input :away
     end
     f.inputs do
@@ -44,6 +45,7 @@ ActiveAdmin.register User do
     column :name
     toggle_bool_column :admin
     toggle_bool_column :active
+    toggle_bool_column :excepted
     column :telegram_id
     column :away
     column :cleaned

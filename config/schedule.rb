@@ -25,3 +25,7 @@ every :monday, at: "6:00pm" do
   rake "dbcalc:send_mail"
   rake "dbcalc:weekly_sum"
 end
+
+every :wednesday, at: "17:00" do
+  runner 'Notifications.notify_heavy_debt!'
+end

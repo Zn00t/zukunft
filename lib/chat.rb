@@ -71,6 +71,23 @@ class Chat
     "[#{name}](tg://user?id=#{id})"
   end
 
+  def telegram_user(user)
+    TelegramBot::User.new(id: user.telegram_id, first_name: user.name)
+  end
+
+  # send one user which weekly task it is. send to group if contacting is
+  # impossible
+  def notify_task(task:)
+    begin
+      text = "Hi! This week it's your turn to do #{task.room.name}. 👍"
+      send_message(text, to: telegram_user(task.user))
+      send_message(task.room.description, to: telegram_user(task.user)) if !task.room.description.nil? && !task.room.description != ''
+    rescue TelegramBot::ApiResponse::ResponseError
+      text = "Hi #{user_mention(task.user.name, task.user.telegram_id)}! This week it's your turn to do #{task.room.name}. Also please chat me up, so i can send you direct messages"
+      send_message(text)
+    end
+  end
+
   private
   def random_gif_url(topic)
     a = JSON.parse(RestClient.get("http://api.giphy.com/v1/gifs/random?api_key=l2k8R5Y94uU0zZjH2jCEndQe38ReWO7F&tag=#{topic}").body)

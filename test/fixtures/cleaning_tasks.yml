@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: one
+  user: one
+  task_start: 2024-02-06
+  done: false
+
+two:
+  room: two
+  user: two
+  task_start: 2024-02-06
+  done: false

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_15_214910) do
+ActiveRecord::Schema.define(version: 2024_02_06_171106) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2024_01_15_214910) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
+  create_table "cleaning_tasks", force: :cascade do |t|
+    t.integer "room_id", null: false
+    t.integer "user_id", null: false
+    t.date "task_start", null: false
+    t.boolean "done", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_cleaning_tasks_on_room_id"
+    t.index ["user_id"], name: "index_cleaning_tasks_on_user_id"
   end
 
   create_table "finance_values", force: :cascade do |t|
@@ -76,10 +87,12 @@ ActiveRecord::Schema.define(version: 2024_01_15_214910) do
     t.boolean "cleaned", default: false, null: false
     t.date "away"
     t.boolean "deleted", default: false
+    t.integer "telegram_id"
     t.boolean "excepted", default: false
-    t.bigint "telegram_id"
   end
 
+  add_foreign_key "cleaning_tasks", "rooms"
+  add_foreign_key "cleaning_tasks", "users"
   add_foreign_key "finance_values", "users"
   add_foreign_key "restacks", "users"
 end

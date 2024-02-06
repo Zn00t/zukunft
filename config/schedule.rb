@@ -26,6 +26,10 @@ every :monday, at: "6:00pm" do
   rake "dbcalc:weekly_sum"
 end
 
+every :monday, at: "5:00pm" do
+  rake "weekly_putz:new_week"
+end
+
 every :wednesday, at: "17:00" do
   runner 'Notifications.notify_heavy_debt!'
 end

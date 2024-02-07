@@ -23,10 +23,6 @@
         <%= values.label t('cleaning').to_sym %><br>
         <%= values.text_field :cleaning, value: User.find(params[:id]).cleaning, class: "inputField" %>
       </div>
-      <div class="col">
-        <%= values.label t('cleaned?').to_sym %><br>
-        <%= values.check_box :cleaned, checked: User.find(params[:id]).cleaned, class: "input-checkbox" %>
-      </div>
       <div class="col align-self-center">
         <%= values.submit t('save'), class: "btn btn-info finance-edit-button" %>
       </div>

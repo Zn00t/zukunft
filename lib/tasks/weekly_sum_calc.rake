@@ -14,11 +14,9 @@ namespace :dbcalc do
 
         # if user didn't clean, increase cleaning account
 
-        if !user.cleaned && !user.excepted
+        if !user.cleaning_tasks.done? && !user.excepted
           user.cleaning += 10
           puts "#{user.name} didn't clean! +10 for dirtyness!"
-        else
-          user.cleaned = false unless user.excepted
         end
         user.save
       end

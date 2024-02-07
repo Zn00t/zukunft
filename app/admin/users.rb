@@ -33,7 +33,6 @@ ActiveAdmin.register User do
     end
 
     f.inputs do
-      input :cleaned
       input :deleted
     end
 
@@ -48,7 +47,6 @@ ActiveAdmin.register User do
     toggle_bool_column :excepted
     column :telegram_id
     column :away
-    column :cleaned
     actions
   end
 end

@@ -16,10 +16,10 @@
     <td><%= number_with_precision(table_item.food, precision: 2, strip_insignificant_zeros: true) %></td>
     <td><%= number_with_precision(table_item.invest, precision: 2, strip_insignificant_zeros: true) %></td>
     <td><%= table_item.cleaning %></td>
-    <% if table_item.cleaned == true %>
+    <% if table_item.current_cleaningtask.done == true %>
       <td class="ticked"><%= image_tag "tick.png" %></td>
     <% else %>
-      <td><%= CleaningTask.current_week.where(user: table_item).first&.room&.name %></td>
+      <td><%= table_item.current_cleaningtask&.room&.name %></td>
     <% end %>
     <% if table_item.away.present? || User.where.not(:away => nil).present? %>
       <% if table_item.away.present? %>

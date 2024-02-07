@@ -35,7 +35,7 @@ class HomeController < ApplicationController
   end
 
   def cleaning
-    Current.user.cleaned!
+    Current.user.current_cleaningtask.done!
     redirect_to root_path, notice: t('alertThankYou')
   end
 

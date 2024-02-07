@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   has_many :restacks
 
+  has_one :current_cleaningtask, -> { current_week }, class_name: 'CleaningTask'
+  has_many :cleaning_tasks
+
   attribute :sum, :float, default: 0
   attribute :rate, :integer, default: 25
   attribute :food, :float, default: 0
@@ -22,10 +25,6 @@ class User < ApplicationRecord
     food + invest + cleaning
   end
   alias_method :sum, :total_debt # shim for refactoring
-
-  def cleaned!
-    update(cleaned: true)
-  end
 
   def shopped_food(amount:)
     update(food: self.food - amount)

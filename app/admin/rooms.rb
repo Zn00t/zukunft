@@ -14,5 +14,17 @@ ActiveAdmin.register Room do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  #
+
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :description, as: :text
+      f.input :active
+      f.input :deleted
+    end
+
+    f.actions
+  end
 
 end

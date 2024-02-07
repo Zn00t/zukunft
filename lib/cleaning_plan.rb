@@ -3,7 +3,7 @@ module CleaningPlan
 
   def generate_weekplan
     rooms = Room.where(active: true)
-    users = User.where(active: true).all.shuffle
+    users = User.active.where(excepted: false).all.shuffle
 
     now = Date.today
 

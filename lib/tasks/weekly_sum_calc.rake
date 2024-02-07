@@ -3,7 +3,6 @@ require_relative '../assets/telegram_shared.rb'
 namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
-
     if Time.now.monday?
       User.active.each do |user|
         next unless user.away.nil?
@@ -23,10 +22,13 @@ namespace :dbcalc do
     else
       puts "Hey, its not Monday! (sum not updated)"
     end
+  end
 
+  desc "Adds the monthly rates for each user"
+  task :monthly_sum => :environment do
+    # just extra guard because it's money. don't run it anywhen else
     if Date.today.day == 1
-      User.find_each do |user|
-        next unless user.active
+      User.active.each do |user|
         user.invest += 7
         puts "#{user.name}'s invest updated (+7)'"
         user.save

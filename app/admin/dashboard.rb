@@ -2,13 +2,33 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
+  page_action :generate_weekplan, method: :post do
+    CleaningPlan.generate_weekplan
+    CleaningPlan.notify_telegram
+    redirect_to admin_dashboard_path, notice: "neuer plan erstellt"
+  end
+
+  action_item :generate_weekplan do
+    link_to "Neuer Putzplan", admin_dashboard_generate_weekplan_path, method: :post
+  end
+
   content title: proc { I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+    div class: "blank_slate_container", id: "putzhistorie" do
+      columns do
+        column do
+          panel "this week of putz" do
+            pie_chart CleaningTask.current_week.group(:done).count, ytitle: 'done'
+          end
+        end
+
+        column do
+          panel "roomhistory" do
+            column_chart CleaningTask.all.group_by {|o| [o.room.name, o.done ? 'Done' : 'Not Done'] }.transform_values(&:count)
+          end
+        end
       end
     end
+  end
 
     # Here is an example of a simple dashboard with columns and panels.
     #
@@ -29,5 +49,5 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
-  end # content
+    # content
 end

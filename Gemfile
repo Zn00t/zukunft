@@ -27,7 +27,7 @@ gem "rest-client"
 gem "whenever"
 gem "activeadmin"
 gem 'activeadmin_addons'
-
+gem 'chartkick'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

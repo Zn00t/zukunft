@@ -19,7 +19,13 @@
     <% if table_item.current_cleaningtask&.done == true %>
       <td class="ticked"><%= image_tag "tick.png" %></td>
     <% else %>
-      <td><%= table_item.current_cleaningtask&.room&.name %></td>
+      <td
+          class="tooltip-cell"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title='<%= table_item.current_cleaningtask&.room&.description&.html_safe %>'>
+        <%= table_item.current_cleaningtask&.room&.name %>
+      </td>
     <% end %>
     <% if table_item.away.present? || User.where.not(:away => nil).present? %>
       <% if table_item.away.present? %>

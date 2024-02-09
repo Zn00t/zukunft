@@ -25,13 +25,13 @@
     <th><%= t('overallSum') %></th>
     <td></td><td></td>
     <td>
-      <%= number_with_precision(@user.map(&:food).sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@non_deleted_users.map(&:food).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td>
-      <%= number_with_precision(@user.map(&:invest).sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@non_deleted_users.map(&:invest).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td>
-      <%= number_with_precision(@user.map(&:cleaning).sum, precision: 2, strip_insignificant_zeros: true) %>
+      <%= number_with_precision(@non_deleted_users.map(&:cleaning).sum, precision: 2, strip_insignificant_zeros: true) %>
     </td>
     <td></td><td></td>
   </tr>

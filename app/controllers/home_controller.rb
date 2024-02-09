@@ -6,6 +6,7 @@ class HomeController < ApplicationController
 
   def index
     @user = User.all
+    @non_deleted_users = User.where(:deleted => false)
   end
 
   def foreign_restack

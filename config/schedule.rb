@@ -24,14 +24,11 @@ set :output, "log/cron.log"
 every :monday, at: "6:00pm" do
   rake "dbcalc:send_mail"
   rake "dbcalc:weekly_sum"
+  rake "weekly_putz:new_week"
 end
 
 every :month, at: "6:00pm" do
   rake "dbcalc:monthly_sum"
-end
-
-every :monday, at: "5:00pm" do
-  rake "weekly_putz:new_week"
 end
 
 every :wednesday, at: "17:00" do

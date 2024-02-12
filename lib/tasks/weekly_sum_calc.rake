@@ -4,6 +4,8 @@ namespace :dbcalc do
   desc "Adds the weekly rate for each user to the user's sum"
   task :weekly_sum => :environment do
     if Time.now.monday?
+      puts "heute ist #{Date.today} und es läuft weekly_sum"
+
       User.active.each do |user|
         next unless user.away.nil?
 
@@ -28,6 +30,7 @@ namespace :dbcalc do
   task :monthly_sum => :environment do
     # just extra guard because it's money. don't run it anywhen else
     if Date.today.day == 1
+      puts "heute ist #{Date.today} und es läuft monthly_sum"
       User.active.each do |user|
         user.invest += 7
         puts "#{user.name}'s invest updated (+7)'"

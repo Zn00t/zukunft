@@ -4,11 +4,16 @@ class CleaningTask < ApplicationRecord
 
   validates_presence_of :room, :user
 
-  scope :open, -> { where(done: false) }
+  scope :not_done, -> { where(done: false) }
 
   scope :current_week, -> {
     today = Date.today
     where(task_start: today - (today.wday - 1) % 7)
+  }
+
+  scope :last_week, -> {
+    today = Date.today
+    where(task_start: today - 7 - ((today.wday - 1) % 7))
   }
 
   def task_end

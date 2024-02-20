@@ -22,7 +22,7 @@ module CleaningPlan
   end
 
   def notify_telegram
-    CleaningTask.current_week.open.each do |task|
+    CleaningTask.current_week.not_done.each do |task|
       chat.notify_task(task: task)
     end
   end

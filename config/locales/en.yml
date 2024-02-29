@@ -86,3 +86,10 @@ en:
 
   restackButton: "suggest transaction"
   restackQuestion: "How much money do you want to send?"
+
+  time:
+    formats:
+      long: '%c'
+  date:
+    formats:
+      long: '%d.%m.%Y'

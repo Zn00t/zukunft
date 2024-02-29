@@ -36,8 +36,16 @@ class HomeController < ApplicationController
   end
 
   def cleaning
-    Current.user.current_cleaningtask.done!
-    redirect_to root_path, notice: t('alertThankYou')
+    if Current.user.current_cleaningtask.present?
+      Current.user.current_cleaningtask.done!
+      redirect_to root_path, notice: t('alertThankYou')
+    elsif Current.user.cleaning_tasks.last_week.present?
+      Current.user.cleaning_tasks.last_week.done!
+      redirect_to root_path, notice: "#{t('alertThankYou')}\n#{t('noticeLastWeekCleaningDone')}"
+    else
+      redirect_to root_path, notice: t('noticeNotFound')
+    end
+
   end
 
   def checkrestacks

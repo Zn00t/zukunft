@@ -81,6 +81,8 @@ en:
   alertLoggedInSuccessfully: "Logged in successfully."
   alertWrongCredentials: "Wrong username or password."
   alertLoggedOut: "You were logged out successfully."
-  
+
+  noticeLastWeekCleaningDone: "There was no Putz for this week, so I assumed you meant the one for last week."
+
   restackButton: "suggest transaction"
   restackQuestion: "How much money do you want to send?"

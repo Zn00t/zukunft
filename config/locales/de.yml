@@ -50,7 +50,10 @@ de:
   alertLoggedInSuccessfully: "Erfolgreich eingeloggt."
   alertWrongCredentials: "Falscher Benutzername oder Passwort."
   alertLoggedOut: "Erfolgreich ausgeloggt."
-  
+
+  noticeLastWeekCleaningDone: "Diese Woche gab es noch keinen Putz. Ich nehme an, du meinst letzte Woche und der ist nun gedone-t"
+  noticeNotFound: "‾\_(ツ)_/‾ Nicht gefunden (ง •̀_•́)ง"
+
   restackButton: "Umschichtung vorschlagen"
   restackQuestion: "Wie viel möchtest du übertragen?"
 

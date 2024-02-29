@@ -2,9 +2,15 @@
 <div class="row">
   <div class="col"></div>
   <div class="col">
-    <button type="button" class="btn btn-primary cleaningButton" data-bs-toggle="modal" data-bs-target="#cleaningModal">
-      <%= t('cleaningButton') %>
-    </button>
+    <% if Current.user.current_cleaningtask.present? || Current.user.cleaning_tasks.last_week.present? %>
+      <button type="button" class="btn btn-primary cleaningButton" data-bs-toggle="modal" data-bs-target="#cleaningModal">
+        <% if Current.user.current_cleaningtask.present? %>
+          <%= t('cleaningButton') %>
+        <% elsif Current.user.cleaning_tasks.last_week.present? %>
+          <%= t('cleaningButtonLastWeek') %>
+        <% end %>
+      </button>
+    <% end %>
   </div>
   <div class="col"></div>
 </div>

@@ -14,6 +14,7 @@ de:
   save: "Speichern"
   cancel: "Abbrechen"
   cleaningButton: "Ich habe geputzt!"
+  cleaningButtonLastWeek: "Ich habe letzte Woche geputzt!"
   cleaningQuestion: "Hast du auch ganz sicher geputzt?"
   cleaningSubmit: "Na klaa!"
 

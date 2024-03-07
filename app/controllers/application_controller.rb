@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     I18n.with_locale(locale, &action)
   end
 
-  private def rescue404
+  def rescue404
     render plain: "404 Not Found", status: 404
   end
 

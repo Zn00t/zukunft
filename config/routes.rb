@@ -29,5 +29,7 @@ Rails.application.routes.draw do
 
   get "admincorner", to: "admincorner#index", as: "admincorner"
   post "admincorner", to: "admincorner#change", as: "admincorner_change"
+
+  match '*unmatched', to: 'application#rescue404', via: :all
 end
 

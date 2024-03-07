@@ -11,7 +11,7 @@ class TelegramLogger < ActiveSupport::Logger
     return true if severity < level
 
     if severity >= telegram_log_level
-      message = (message || (block && block.call) || progname).to_s
+      message = "lvl#{severity}: #{(message || (block && block.call) || progname).to_s}"
       @chat.send_message(message, to: Chat::ERROR_CHAT)
     end
 

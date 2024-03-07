@@ -23,7 +23,7 @@ class Chat
   ZUKUNFTCHAT = TelegramBot::Channel.new(id: -1_001_645_342_432) # zukunft supergroup
   KLINGELGRUPPE = TelegramBot::Channel.new(id: -1_001_149_902_183)
   DINGDONGGRUPPE = TelegramBot::Channel.new(id: -4_052_388_495)
-  ERROR_CHAT = TelegramBot::Channel.new(id: -229_011_980) # fake gruppe
+  ERROR_CHAT = TelegramBot::Channel.new(id: -4_179_431_346)
 
   def initialize(token:)
     @token = token

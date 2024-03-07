@@ -94,6 +94,9 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
+  # decrease routing error to 404
+  config.action_dispatch.rescue_responses['ActionController::RoutingError'] = :not_found
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 

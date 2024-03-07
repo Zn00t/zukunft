@@ -103,6 +103,7 @@ Rails.application.configure do
   chat = Chat.new(token: Rails.application.credentials.tokens[:der_typ_der_kontrolliert])
   telegram_logger = TelegramLogger.new(chat)
   telegram_logger.level = Logger::ERROR
+  telegram_logger.telegram_log_level = Logger::FATAL
 
   old_logger = config.logger
 

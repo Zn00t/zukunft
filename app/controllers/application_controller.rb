@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_user
   around_action :switch_locale
+  rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
+  rescue_from ActionController::RoutingError, :with => :rescue404
 
   def default_url_options
     { locale: I18n.locale }
@@ -27,6 +29,10 @@ class ApplicationController < ActionController::Base
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
     I18n.with_locale(locale, &action)
+  end
+
+  private def rescue404
+    render plain: "404 Not Found", status: 404
   end
 
 end

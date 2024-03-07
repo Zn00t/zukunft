@@ -40,8 +40,9 @@ class HomeController < ApplicationController
       Current.user.current_cleaningtask.done!
       redirect_to root_path, notice: t('alertThankYou')
     elsif Current.user.cleaning_tasks.last_week.present?
-      Current.user.cleaning_tasks.last_week.done!
-      redirect_to root_path, notice: "#{t('alertThankYou')}\n#{t('noticeLastWeekCleaningDone')}"
+      tasks = Current.user.cleaning_tasks.last_week
+      tasks.map(&:done!)
+      redirect_to root_path, notice: "#{t('alertThankYou')}\n#{t('noticeLastWeekCleaningDone')}, #{tasks.size} abgehakt."
     else
       redirect_to root_path, notice: t('noticeNotFound')
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_13_074511) do
+ActiveRecord::Schema.define(version: 2024_03_17_160159) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2024_02_13_074511) do
     t.index ["user_id"], name: "index_finance_values_on_user_id"
   end
 
+  create_table "historical_sums", force: :cascade do |t|
+    t.float "food"
+    t.float "invest"
+    t.float "cleaning"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "restacks", force: :cascade do |t|
     t.integer "from_id"
     t.integer "to_id"
@@ -87,8 +95,8 @@ ActiveRecord::Schema.define(version: 2024_02_13_074511) do
     t.boolean "cleaned", default: false, null: false
     t.date "away"
     t.boolean "deleted", default: false
-    t.integer "telegram_id"
     t.boolean "excepted", default: false
+    t.integer "telegram_id"
   end
 
   add_foreign_key "cleaning_tasks", "rooms"

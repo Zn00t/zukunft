@@ -23,41 +23,31 @@ ActiveAdmin.register_page "Dashboard" do
 
         column do
           panel "roomhistory" do
-            column_chart CleaningTask.all.group_by { |o| [o.room.name, o.done ? 'Done' : 'Not Done'] }.transform_values(&:count)
-          end
-        end
-      end
-    end
-
-    div class: "blank_slate_container", id: "essenskassenhistorie" do
-      columns do
-        column do
-          panel "food account history" do
-            line_chart HistoricalSum.all.group_by_day(:created_at).sum(:food)
+            column_chart CleaningTask.all.group_by {|o| [o.room.name, o.done ? 'Done' : 'Not Done'] }.transform_values(&:count)
           end
         end
       end
     end
   end
 
-  # Here is an example of a simple dashboard with columns and panels.
-  #
-  # columns do
-  #   column do
-  #     panel "Recent Posts" do
-  #       ul do
-  #         Post.recent(5).map do |post|
-  #           li link_to(post.title, admin_post_path(post))
-  #         end
-  #       end
-  #     end
-  #   end
+    # Here is an example of a simple dashboard with columns and panels.
+    #
+    # columns do
+    #   column do
+    #     panel "Recent Posts" do
+    #       ul do
+    #         Post.recent(5).map do |post|
+    #           li link_to(post.title, admin_post_path(post))
+    #         end
+    #       end
+    #     end
+    #   end
 
-  #   column do
-  #     panel "Info" do
-  #       para "Welcome to ActiveAdmin."
-  #     end
-  #   end
-  # end
-  # content
+    #   column do
+    #     panel "Info" do
+    #       para "Welcome to ActiveAdmin."
+    #     end
+    #   end
+    # end
+    # content
 end

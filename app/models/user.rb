@@ -20,12 +20,10 @@ class User < ApplicationRecord
   attribute :excepted, :boolean, default: false
 
   scope :active, -> { where(active: true) }
-  scope :non_deleted, -> { where(deleted: false) }
 
   def total_debt
     food + invest + cleaning
   end
-
   alias_method :sum, :total_debt # shim for refactoring
 
   def shopped_food(amount:)

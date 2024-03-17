@@ -31,10 +31,6 @@ every :month, at: "6:00pm" do
   rake "dbcalc:monthly_sum"
 end
 
-every :day, at: "5:58pm" do
-  rake "dbcalc:archive_sums"
-end
-
 every :wednesday, at: "17:00" do
   runner 'Notifications.notify_heavy_debt!'
 end
